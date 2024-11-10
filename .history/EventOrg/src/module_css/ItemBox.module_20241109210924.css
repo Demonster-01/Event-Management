@@ -1,0 +1,12 @@
+.container {
+  margin: 4em;
+  margin-top: 200px;
+}
+.imageContainer {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+}
+.title {
+}

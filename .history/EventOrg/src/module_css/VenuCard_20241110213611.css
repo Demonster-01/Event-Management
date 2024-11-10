@@ -1,0 +1,92 @@
+.venue-card {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  margin: 50px;
+  margin-top: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  width: 23.5%;
+}
+
+.venue-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.venue-details {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.venue-details h2 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.price {
+  color: #cac5c5;
+  border: 1px solid rgba(128, 122, 122, 0.582);
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+  white-space: normal;
+  max-width: 30%;
+  word-wrap: break-word;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.venue-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* .venue-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr; Two columns
+  grid-template-rows: auto auto; Adjusts row heights
+  gap: 10px;
+   width: 70%;
+} */
+
+.venue-stats ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  border-right: 1px solid;
+  margin: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.stats {
+  margin: 0;
+  color: #fff;
+  align-items: center;
+  text-align: center;
+}
+
+/* Make the last .stats item span both columns */
+.venue-stats .stats:last-child {
+  grid-column: span 2;
+}
+
+.book-button {
+  display: block;
+  margin: 0 auto; /* Centers the button */
+  padding: 10px 20px;
+  background-color: #007bff; /* Custom color */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.book-button:hover {
+  background-color: #0062cc;
+}

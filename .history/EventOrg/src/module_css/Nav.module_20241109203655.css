@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 0 1rem;
+}
+
+.navbar {
+  color: #d2dbf5;
+  font-size: 1.3rem;
+  font-family: "Oranienbaum";
+  margin-left: 50px;
+}
+
+.nav_list {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav_item {
+  margin-right: 1.5rem;
+  color: 404a42;
+  cursor: pointer;
+}
+
+.nav_item:hover,
+.btn:hover {
+  text-shadow: 2px 2px 5px rgba(238, 240, 233, 0.884);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.btngroup {
+  display: flex;
+  gap: 1rem;
+  margin-right: 50px;
+}
+
+.btn {
+  font-family: "Oranienbaum";
+  font-size: 1.3rem;
+  border: none;
+  padding: 10px;
+  background-color: transparent;
+  color: #d2dbf5;
+}
+
+.logo {
+  color: white;
+  font-size: 2rem;
+  align-items: center;
+}

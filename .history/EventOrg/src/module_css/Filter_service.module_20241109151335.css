@@ -1,0 +1,45 @@
+.container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* Price labels */
+.nav {
+  display: block;
+  justify-content: center;
+  padding: 10px 0;
+  background-color: #333;
+}
+
+.button {
+  margin: 0 15px; /* Space between buttons */
+  color: white; /* Button text color */
+  background: none; /* Remove default button background */
+  border: none; /* Remove default button border */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.filters {
+  display: flex;
+  justify-content: space-around; /* Equal spacing around filter items */
+  align-items: center; /* Center items vertically */
+  padding: 20px 0; /* Add padding */
+  background-color: #f4f4f4; /* Example background color */
+}
+
+.filters span {
+  margin: 0 10px; /* Space between spans */
+}
+
+.filters input {
+  padding: 5px; /* Padding inside the input */
+}

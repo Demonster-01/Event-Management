@@ -1,0 +1,20 @@
+.container {
+  margin: 4em;
+  margin-top: 200px;
+}
+itembox {
+  border: 1px solid saddlebrown;
+}
+.imageContainer {
+  position: relative;
+  width: 30%;
+  height: auto;
+  /* margin: 0 auto; */
+}
+
+.image {
+  width: 100%;
+  border-radius: 20px;
+}
+.title {
+}
