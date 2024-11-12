@@ -1,0 +1,32 @@
+.container {
+  margin: 2em 4em;
+  color: aliceblue;
+}
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.serviceInfo {
+  flex: 1; /* Make serviceInfo take up more space on the left */
+  margin-right: 2em;
+}
+.Image {
+  display: flex;
+  justify-content: center;
+  height: 60vh;
+}
+.details {
+  margin: 0 2rem;
+  padding: 20px;
+}
+.description {
+  text-align: center;
+}
+.formdiv {
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

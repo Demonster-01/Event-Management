@@ -1,0 +1,12 @@
+.container {
+  margin: 2em 4em;
+  color: aliceblue;
+}
+.Image {
+  display: flex;
+  justify-content: center;
+  height: 60vh;
+}
+.details {
+  margin: 2rem 0;
+}

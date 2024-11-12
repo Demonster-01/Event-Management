@@ -1,0 +1,7 @@
+body {
+  margin: 0;
+  background-color: #0f172a; /* Default text color */
+  min-height: 100vh; /* Ensure the background covers the entire screen */
+
+  font-family: "Oranienbaum", sans-serif;
+}

@@ -1,0 +1,61 @@
+.container {
+  margin: 4em;
+  margin-top: 200px;
+  display: flex; /* Added to align children horizontally */
+  flex-wrap: wrap; /* Allows wrapping when there's not enough space */
+  justify-content: space-evenly; /* Adjust spacing between itemboxes */
+
+  color: #ffffff;
+}
+.itembox {
+  border: 1px solid saddlebrown;
+  width: 25%;
+  border-radius: 20px;
+}
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  /* margin: 0 auto; */
+}
+
+.image {
+  width: 100%;
+  border-radius: 20px;
+}
+.title {
+  margin: 10px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.btn {
+  background-color: #0f172a;
+  color: #ffffff;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  max-height: 55px;
+}
+
+.description {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  padding: 10px;
+  justify-content: center;
+}
+.description span {
+  display: inline-flex;
+  flex: 1 1 30%; /* Flex-grow, flex-shrink, and flex-basis (30% allows them to be on one line but wrap if needed) */
+
+  flex-wrap: wrap;
+  font-size: 16px;
+  text-align: center;
+  border: 1px solid #ffffff;
+  margin: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+}

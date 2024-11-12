@@ -1,0 +1,17 @@
+/* CreateVenue.module.css */
+.formGroup {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 45%;
+  margin: 1.5rem;
+}
+
+.formLabel {
+  font-weight: bold;
+}
+
+.inputField {
+  width: 100%;
+  padding: 0.75rem;
+}

@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+img {
+  height: 20px;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1em; /* Optional spacing between items */
+  color: #ffffff;
+}
+
+.Service_nav {
+  margin-top: 10px;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  display: flex;
+  justify-content: space-between;
+
+  color: #ffffff;
+}
+
+/* Each service item */
+.serviceItem {
+  position: relative;
+  width: 350px;
+  margin: 1em 0; /* Adjust spacing as needed */
+  background-color: #333; /* Background color for each item */
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  font-size: 16px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.serviceItem:hover .overlay {
+  opacity: 1;
+}
