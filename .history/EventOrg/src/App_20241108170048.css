@@ -1,6 +1,0 @@
-body {
-  margin: 0;
-  background-color: #0f172a; /* Default text color */
-  font-family: "Arial", sans-serif; /* Optional, to set a base font family */
-  min-height: 100vh; /* Ensure the background covers the entire screen */
-}
