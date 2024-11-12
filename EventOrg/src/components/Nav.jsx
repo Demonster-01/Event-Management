@@ -1,4 +1,5 @@
 import styles from "../module_css/Nav.module.css";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
   return (
@@ -13,7 +14,9 @@ export default function Nav() {
           </ul>
         </nav>
 
-        <div className={styles.logo}>Logo</div>
+        <div className={styles.logo}>
+          <Link to={`/`}>Logo</Link>
+        </div>
 
         <div className={styles.btngroup}>
           <button className={styles.btn}>Planner</button>

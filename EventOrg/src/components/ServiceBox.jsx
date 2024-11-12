@@ -28,7 +28,7 @@ export default function ServiceBox({ showAllServices = false }) {
       <hr />
       <div className={styles.Service_nav}>
         <h1>Our Services</h1>
-        {!showAllServices && <Link to="/venue-gallery">More Venue...</Link>}
+        {!showAllServices && <Link to="/service-gallery">More Service...</Link>}
       </div>
       {error && <p className={styles.error}>{error}</p>}
       <div className={styles.container}>
@@ -50,7 +50,7 @@ export default function ServiceBox({ showAllServices = false }) {
               <p>
                 {service.keywords}
                 <br />
-                <Link to="/service-detail">More ...</Link>
+                <Link to={`/service-detail/${service.id}`}>More ...</Link>
               </p>
             </div>
             <span className={styles.serviceName}>{service.Name}</span>

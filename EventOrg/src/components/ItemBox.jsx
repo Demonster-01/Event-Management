@@ -25,7 +25,11 @@ export default function ItemBox({ showAllVenues = false }) {
     <div>
       <div className={styles.Venue_nav}>
         <h1>Venue</h1>
-        {!showAllVenues && <Link to="/venue-gallery">More Venue...</Link>}
+        {!showAllVenues && (
+          <Link to="/venue-gallery" className={styles.link}>
+            More Venue...
+          </Link>
+        )}
       </div>
       <div className={styles.container}>
         {error && <p className="text-danger">{error}</p>}

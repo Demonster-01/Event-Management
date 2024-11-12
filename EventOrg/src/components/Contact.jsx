@@ -1,5 +1,3 @@
-import GoogleMap from "./MapDirection";
-
 export default function Contact() {
   return (
     <>

@@ -29,3 +29,10 @@ class Service(models.Model):
     def __str__(self):
         return self.Name
     
+class OurWork(models.Model):
+    Name=models.CharField(max_length=50)
+    poster = models.ImageField(default="default.jpg", upload_to='Our Work')
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.Name

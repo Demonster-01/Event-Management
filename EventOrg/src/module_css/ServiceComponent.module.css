@@ -1,0 +1,16 @@
+.serviceInfo {
+  flex: 2;
+  margin-right: 2em;
+}
+.Image {
+  display: flex;
+  justify-content: center;
+  height: 60vh;
+}
+.details {
+  margin: 0 2rem;
+  padding: 20px;
+}
+.description {
+  text-align: center;
+}
