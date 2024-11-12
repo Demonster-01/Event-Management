@@ -1,6 +1,6 @@
 # serializers.py
 from rest_framework import serializers
-from .models import Venue,Service
+from .models import Venue,Service,OurWork
 
 class VenueSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +17,8 @@ class ServiceSerializer(serializers.ModelSerializer):
         if obj.poster and request:
             return request.build_absolute_uri(obj.poster.url)
         return None
+    
+class OurWorkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OurWork
+        fields = ['id', 'Name', 'poster', 'created_at']
