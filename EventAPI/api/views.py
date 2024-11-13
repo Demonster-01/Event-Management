@@ -4,8 +4,8 @@ from rest_framework.decorators import api_view
 
 from rest_framework.views import APIView
 from rest_framework import generics, status
-from .models import Venue,Service,OurWork
-from .serializer import VenueSerializer, ServiceSerializer ,OurWorkSerializer
+from .models import Venue,Service,OurWork,Package,PlannerList
+from .serializer import VenueSerializer, ServiceSerializer ,OurWorkSerializer, PackageSerializer,PlannerListSerializer
 
 
 @api_view(['GET'])
@@ -81,4 +81,16 @@ class OurWorkListView(APIView):
     def get(self, request):
         our_work = OurWork.objects.all()
         serializer = OurWorkSerializer(our_work, many=True)
+        return Response(serializer.data)
+    
+class PackageView(APIView):
+    def get(self,request,format=None):
+        packages = Package.objects.all()
+        serializer = PackageSerializer(packages, many=True)
+        return Response(serializer.data)
+    
+class PlannerListView(APIView):
+    def get(self,request,format=None):
+        planners = PlannerList.objects.all()
+        serializer=PlannerListSerializer(planners,many=True)
         return Response(serializer.data)

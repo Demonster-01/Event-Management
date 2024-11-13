@@ -1,0 +1,182 @@
+{
+    "sourceFile": "EventOrg/src/components/Package.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 41,
+            "patches": [
+                {
+                    "date": 1731424561597,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731424570445,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,7 @@\n-export default function Package(){\r\n-    return (<div></div>\r\n-}\n\\ No newline at end of file\n+export default function Package() {\r\n+  return (\r\n+    <div>\r\n+      <h1>Package</h1>\r\n+    </div>\r\n+  );\r\n+}\r\n"
+                },
+                {
+                    "date": 1731424638059,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,10 @@\n export default function Package() {\r\n   return (\r\n     <div>\r\n       <h1>Package</h1>\r\n+      <div>Pic</div>\r\n+      <div>Detail</div>\r\n+      <div>Book</div>\r\n     </div>\r\n   );\r\n }\r\n"
+                },
+                {
+                    "date": 1731425362580,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,12 @@\n export default function Package() {\r\n   return (\r\n     <div>\r\n       <h1>Package</h1>\r\n-      <div>Pic</div>\r\n-      <div>Detail</div>\r\n-      <div>Book</div>\r\n+      <div>\r\n+        <div>Pic</div>\r\n+        <div>Detail</div>\r\n+        <div>Book</div>\r\n+      </div>\r\n     </div>\r\n   );\r\n }\r\n"
+                },
+                {
+                    "date": 1731426058439,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import styles from \"../module_css/Package.module.css\";\r\n export default function Package() {\r\n   return (\r\n     <div>\r\n       <h1>Package</h1>\r\n"
+                },
+                {
+                    "date": 1731426080338,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import styles from \"../module_css/Package.module.css\";\r\n export default function Package() {\r\n   return (\r\n-    <div>\r\n+    <div className={styles.container}>\r\n       <h1>Package</h1>\r\n       <div>\r\n         <div>Pic</div>\r\n         <div>Detail</div>\r\n"
+                },
+                {
+                    "date": 1731426125122,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n   return (\r\n     <div className={styles.container}>\r\n       <h1>Package</h1>\r\n       <div>\r\n-        <div>Pic</div>\r\n+        <div className={styles.pic}>Pic</div>\r\n         <div>Detail</div>\r\n         <div>Book</div>\r\n       </div>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1731426135702,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n     <div className={styles.container}>\r\n       <h1>Package</h1>\r\n       <div>\r\n         <div className={styles.pic}>Pic</div>\r\n-        <div>Detail</div>\r\n+        <div className={styles.details}>Detail</div>\r\n         <div>Book</div>\r\n       </div>\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1731426144592,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n       <h1>Package</h1>\r\n       <div>\r\n         <div className={styles.pic}>Pic</div>\r\n         <div className={styles.details}>Detail</div>\r\n-        <div>Book</div>\r\n+        <div className={styles.btn}>Book</div>\r\n       </div>\r\n     </div>\r\n   );\r\n }\r\n"
+                },
+                {
+                    "date": 1731426176028,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n export default function Package() {\r\n   return (\r\n     <div className={styles.container}>\r\n       <h1>Package</h1>\r\n-      <div>\r\n+      <div className={styles.package}>\r\n         <div className={styles.pic}>Pic</div>\r\n         <div className={styles.details}>Detail</div>\r\n         <div className={styles.btn}>Book</div>\r\n       </div>\r\n"
+                },
+                {
+                    "date": 1731427643521,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,22 @@\n+import { useEffect, useState } from \"react\";\r\n import styles from \"../module_css/Package.module.css\";\r\n+import axios from \"axios\";\r\n export default function Package() {\r\n+    const [package, setPackage]=useState([]);\r\n+\r\n+    useEffect(()=>{\r\n+        axios\r\n+        .get(\"http://127.0.0.1:8000/api/package/\")\r\n+        .then((response) =>response.json())\r\n+        .then((data) => setPackage(data))\r\n+        \r\n+        })\r\n+        .catch((error) => {\r\n+          setError(\"Error fetching venues\");\r\n+          console.error(error);\r\n+        });\r\n+    })\r\n   return (\r\n     <div className={styles.container}>\r\n       <h1>Package</h1>\r\n       <div className={styles.package}>\r\n"
+                },
+                {
+                    "date": 1731427650192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n         .then((data) => setPackage(data))\r\n         \r\n         })\r\n         .catch((error) => {\r\n-          setError(\"Error fetching venues\");\r\n+          setError(\"Error fetching packages\");\r\n           console.error(error);\r\n         });\r\n     })\r\n   return (\r\n"
+                },
+                {
+                    "date": 1731427726064,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,12 +18,16 @@\n     })\r\n   return (\r\n     <div className={styles.container}>\r\n       <h1>Package</h1>\r\n+      \r\n+      {venues.map((venue) => (\r\n       <div className={styles.package}>\r\n         <div className={styles.pic}>Pic</div>\r\n-        <div className={styles.details}>Detail</div>\r\n+        <div className={styles.details}><{package.Name}></div>\r\n         <div className={styles.btn}>Book</div>\r\n       </div>\r\n+      \r\n+    ))}\r\n     </div>\r\n   );\r\n }\r\n"
+                },
+                {
+                    "date": 1731427760786,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import { useEffect, useState } from \"react\";\r\n import styles from \"../module_css/Package.module.css\";\r\n import axios from \"axios\";\r\n export default function Package() {\r\n-    const [package, setPackage]=useState([]);\r\n+    const [packages, setPackage]=useState([]);\r\n \r\n     useEffect(()=>{\r\n         axios\r\n         .get(\"http://127.0.0.1:8000/api/package/\")\r\n@@ -19,9 +19,9 @@\n   return (\r\n     <div className={styles.container}>\r\n       <h1>Package</h1>\r\n       \r\n-      {venues.map((venue) => (\r\n+      {packages.map((package) => (\r\n       <div className={styles.package}>\r\n         <div className={styles.pic}>Pic</div>\r\n         <div className={styles.details}><{package.Name}></div>\r\n         <div className={styles.btn}>Book</div>\r\n"
+                },
+                {
+                    "date": 1731427796638,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       \r\n       {packages.map((package) => (\r\n       <div className={styles.package}>\r\n         <div className={styles.pic}>Pic</div>\r\n-        <div className={styles.details}><{package.Name}></div>\r\n+        <div className={styles.details}><p>{package.Name}</p></div>\r\n         <div className={styles.btn}>Book</div>\r\n       </div>\r\n       \r\n     ))}\r\n"
+                },
+                {
+                    "date": 1731427882017,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,33 +1,40 @@\n import { useEffect, useState } from \"react\";\r\n import styles from \"../module_css/Package.module.css\";\r\n import axios from \"axios\";\r\n+\r\n export default function Package() {\r\n-    const [packages, setPackage]=useState([]);\r\n+  const [packages, setPackages] = useState([]);\r\n+  const [error, setError] = useState(null);\r\n \r\n-    useEffect(()=>{\r\n-        axios\r\n-        .get(\"http://127.0.0.1:8000/api/package/\")\r\n-        .then((response) =>response.json())\r\n-        .then((data) => setPackage(data))\r\n-        \r\n-        })\r\n-        .catch((error) => {\r\n-          setError(\"Error fetching packages\");\r\n-          console.error(error);\r\n-        });\r\n-    })\r\n+  useEffect(() => {\r\n+    axios\r\n+      .get(\"http://127.0.0.1:8000/api/package/\")\r\n+      .then((response) => setPackages(response.data))\r\n+      .catch((error) => {\r\n+        setError(\"Error fetching packages\");\r\n+        console.error(error);\r\n+      });\r\n+  }, []);\r\n+\r\n   return (\r\n     <div className={styles.container}>\r\n       <h1>Package</h1>\r\n-      \r\n-      {packages.map((package) => (\r\n-      <div className={styles.package}>\r\n-        <div className={styles.pic}>Pic</div>\r\n-        <div className={styles.details}><p>{package.Name}</p></div>\r\n-        <div className={styles.btn}>Book</div>\r\n-      </div>\r\n-      \r\n-    ))}\r\n+\r\n+      {error && <p className={styles.error}>{error}</p>}\r\n+\r\n+      {packages.length > 0 ? (\r\n+        packages.map((pkg) => (\r\n+          <div key={pkg.id} className={styles.package}>\r\n+            <div className={styles.pic}>Pic</div>\r\n+            <div className={styles.details}>\r\n+              <p>{pkg.Name}</p>\r\n+            </div>\r\n+            <div className={styles.btn}>Book</div>\r\n+          </div>\r\n+        ))\r\n+      ) : (\r\n+        <p>No packages available</p>\r\n+      )}\r\n     </div>\r\n   );\r\n }\r\n"
+                },
+                {
+                    "date": 1731427944890,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,11 @@\n \r\n       {packages.length > 0 ? (\r\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n-            <div className={styles.pic}>Pic</div>\r\n+            <div className={styles.pic}>\r\n+              <img src={pkg.Name} />\r\n+            </div>\r\n             <div className={styles.details}>\r\n               <p>{pkg.Name}</p>\r\n             </div>\r\n             <div className={styles.btn}>Book</div>\r\n"
+                },
+                {
+                    "date": 1731427974725,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,8 +29,9 @@\n               <img src={pkg.Name} />\r\n             </div>\r\n             <div className={styles.details}>\r\n               <p>{pkg.Name}</p>\r\n+              <p>{pkg.Description}</p>\r\n             </div>\r\n             <div className={styles.btn}>Book</div>\r\n           </div>\r\n         ))\r\n"
+                },
+                {
+                    "date": 1731428010639,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,11 @@\n             <div className={styles.details}>\r\n               <p>{pkg.Name}</p>\r\n               <p>{pkg.Description}</p>\r\n             </div>\r\n-            <div className={styles.btn}>Book</div>\r\n+            <div className={styles.btn}>\r\n+              <button>Book</button>\r\n+            </div>\r\n           </div>\r\n         ))\r\n       ) : (\r\n         <p>No packages available</p>\r\n"
+                },
+                {
+                    "date": 1731428632625,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,8 +30,9 @@\n             </div>\r\n             <div className={styles.details}>\r\n               <p>{pkg.Name}</p>\r\n               <p>{pkg.Description}</p>\r\n+              <p>{pkg.Price}</p>\r\n             </div>\r\n             <div className={styles.btn}>\r\n               <button>Book</button>\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1731428640649,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n             </div>\r\n             <div className={styles.details}>\r\n               <p>{pkg.Name}</p>\r\n               <p>{pkg.Description}</p>\r\n-              <p>{pkg.Price}</p>\r\n+              <p>Nrs.{pkg.Price}</p>\r\n             </div>\r\n             <div className={styles.btn}>\r\n               <button>Book</button>\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1731428901138,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n       {packages.length > 0 ? (\r\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n             <div className={styles.pic}>\r\n-              <img src={pkg.Name} />\r\n+              <img src={`http://127.0.0.1:8000${pkg.poster}`} />\r\n             </div>\r\n             <div className={styles.details}>\r\n               <p>{pkg.Name}</p>\r\n               <p>{pkg.Description}</p>\r\n"
+                },
+                {
+                    "date": 1731429006149,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,18 @@\n       {packages.length > 0 ? (\r\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n             <div className={styles.pic}>\r\n-              <img src={`http://127.0.0.1:8000${pkg.poster}`} />\r\n+              <img\r\n+                alt=\"service\"\r\n+                style={{\r\n+                  width: \"100%\",\r\n+                  maxWidth: \"700px\", // Example maximum width\r\n+                  height: \"auto\",\r\n+                  objectFit: \"cover\",\r\n+                }}\r\n+                src={`http://127.0.0.1:8000${pkg.poster}`}\r\n+              />\r\n             </div>\r\n             <div className={styles.details}>\r\n               <p>{pkg.Name}</p>\r\n               <p>{pkg.Description}</p>\r\n"
+                },
+                {
+                    "date": 1731429018841,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n                 alt=\"service\"\r\n                 style={{\r\n                   width: \"100%\",\r\n                   maxWidth: \"700px\", // Example maximum width\r\n-                  height: \"auto\",\r\n+                  height: \"10%\",\r\n                   objectFit: \"cover\",\r\n                 }}\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n               />\r\n"
+                },
+                {
+                    "date": 1731429024354,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n                 alt=\"service\"\r\n                 style={{\r\n                   width: \"100%\",\r\n                   maxWidth: \"700px\", // Example maximum width\r\n-                  height: \"10%\",\r\n+                  height: \"10px\",\r\n                   objectFit: \"cover\",\r\n                 }}\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n               />\r\n"
+                },
+                {
+                    "date": 1731429032701,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n                 alt=\"service\"\r\n                 style={{\r\n                   width: \"100%\",\r\n                   maxWidth: \"700px\", // Example maximum width\r\n-                  height: \"10px\",\r\n+                  height: \"200px\",\r\n                   objectFit: \"cover\",\r\n                 }}\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n               />\r\n"
+                },
+                {
+                    "date": 1731429046657,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n                 alt=\"service\"\r\n                 style={{\r\n                   width: \"100%\",\r\n                   maxWidth: \"700px\", // Example maximum width\r\n-                  height: \"200px\",\r\n+                  height: \"150px\",\r\n                   objectFit: \"cover\",\r\n                 }}\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n               />\r\n"
+                },
+                {
+                    "date": 1731429083781,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,10 +24,11 @@\n \r\n       {packages.length > 0 ? (\r\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n-            <div className={styles.pic}>\r\n+            <div className={styles.picdiv}>\r\n               <img\r\n+                className={styles.pics}\r\n                 alt=\"service\"\r\n                 style={{\r\n                   width: \"100%\",\r\n                   maxWidth: \"700px\", // Example maximum width\r\n"
+                },
+                {
+                    "date": 1731429115102,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,14 +28,8 @@\n             <div className={styles.picdiv}>\r\n               <img\r\n                 className={styles.pics}\r\n                 alt=\"service\"\r\n-                style={{\r\n-                  width: \"100%\",\r\n-                  maxWidth: \"700px\", // Example maximum width\r\n-                  height: \"150px\",\r\n-                  objectFit: \"cover\",\r\n-                }}\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n               />\r\n             </div>\r\n             <div className={styles.details}>\r\n"
+                },
+                {
+                    "date": 1731429186240,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n           <div key={pkg.id} className={styles.package}>\r\n             <div className={styles.picdiv}>\r\n               <img\r\n                 className={styles.pics}\r\n-                alt=\"service\"\r\n+                alt=\"Package\"\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n               />\r\n             </div>\r\n             <div className={styles.details}>\r\n"
+                },
+                {
+                    "date": 1731429205441,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,11 +26,11 @@\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n             <div className={styles.picdiv}>\r\n               <img\r\n-                className={styles.pics}\r\n                 alt=\"Package\"\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n+                className={styles.pics}\r\n               />\r\n             </div>\r\n             <div className={styles.details}>\r\n               <p>{pkg.Name}</p>\r\n"
+                },
+                {
+                    "date": 1731429360945,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,8 +39,9 @@\n             </div>\r\n             <div className={styles.btn}>\r\n               <button>Book</button>\r\n             </div>\r\n+            <hr />\r\n           </div>\r\n         ))\r\n       ) : (\r\n         <p>No packages available</p>\r\n"
+                },
+                {
+                    "date": 1731429379369,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,9 @@\n \r\n       {packages.length > 0 ? (\r\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n+            <hr />\r\n             <div className={styles.picdiv}>\r\n               <img\r\n                 alt=\"Package\"\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n@@ -39,9 +40,8 @@\n             </div>\r\n             <div className={styles.btn}>\r\n               <button>Book</button>\r\n             </div>\r\n-            <hr />\r\n           </div>\r\n         ))\r\n       ) : (\r\n         <p>No packages available</p>\r\n"
+                },
+                {
+                    "date": 1731429386369,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,12 +21,12 @@\n       <h1>Package</h1>\r\n \r\n       {error && <p className={styles.error}>{error}</p>}\r\n \r\n+      <hr />\r\n       {packages.length > 0 ? (\r\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n-            <hr />\r\n             <div className={styles.picdiv}>\r\n               <img\r\n                 alt=\"Package\"\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n"
+                },
+                {
+                    "date": 1731429394907,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,12 +21,12 @@\n       <h1>Package</h1>\r\n \r\n       {error && <p className={styles.error}>{error}</p>}\r\n \r\n-      <hr />\r\n       {packages.length > 0 ? (\r\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n+            <hr />\r\n             <div className={styles.picdiv}>\r\n               <img\r\n                 alt=\"Package\"\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n"
+                },
+                {
+                    "date": 1731429408398,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n \r\n       {packages.length > 0 ? (\r\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n-            <hr />\r\n+            \r\n             <div className={styles.picdiv}>\r\n               <img\r\n                 alt=\"Package\"\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n@@ -41,8 +41,10 @@\n             <div className={styles.btn}>\r\n               <button>Book</button>\r\n             </div>\r\n           </div>\r\n+          \r\n+      <hr />\r\n         ))\r\n       ) : (\r\n         <p>No packages available</p>\r\n       )}\r\n"
+                },
+                {
+                    "date": 1731429413733,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,8 @@\n \r\n       {packages.length > 0 ? (\r\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n-            \r\n             <div className={styles.picdiv}>\r\n               <img\r\n                 alt=\"Package\"\r\n                 src={`http://127.0.0.1:8000${pkg.poster}`}\r\n@@ -40,11 +39,11 @@\n             </div>\r\n             <div className={styles.btn}>\r\n               <button>Book</button>\r\n             </div>\r\n+\r\n+            <hr />\r\n           </div>\r\n-          \r\n-      <hr />\r\n         ))\r\n       ) : (\r\n         <p>No packages available</p>\r\n       )}\r\n"
+                },
+                {
+                    "date": 1731429431208,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,10 +40,11 @@\n             <div className={styles.btn}>\r\n               <button>Book</button>\r\n             </div>\r\n \r\n-            <hr />\r\n           </div>\r\n+          \r\n+          <hr />\r\n         ))\r\n       ) : (\r\n         <p>No packages available</p>\r\n       )}\r\n"
+                },
+                {
+                    "date": 1731429455982,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,10 +41,11 @@\n               <button>Book</button>\r\n             </div>\r\n \r\n           </div>\r\n-          \r\n+          <>\r\n           <hr />\r\n+          </>\r\n         ))\r\n       ) : (\r\n         <p>No packages available</p>\r\n       )}\r\n"
+                },
+                {
+                    "date": 1731429476441,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,13 +39,9 @@\n             </div>\r\n             <div className={styles.btn}>\r\n               <button>Book</button>\r\n             </div>\r\n-\r\n           </div>\r\n-          <>\r\n-          <hr />\r\n-          </>\r\n         ))\r\n       ) : (\r\n         <p>No packages available</p>\r\n       )}\r\n"
+                },
+                {
+                    "date": 1731429500988,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,23 +24,27 @@\n \r\n       {packages.length > 0 ? (\r\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n-            <div className={styles.picdiv}>\r\n-              <img\r\n-                alt=\"Package\"\r\n-                src={`http://127.0.0.1:8000${pkg.poster}`}\r\n-                className={styles.pics}\r\n-              />\r\n+            <div>\r\n+              <div className={styles.picdiv}>\r\n+                <img\r\n+                  alt=\"Package\"\r\n+                  src={`http://127.0.0.1:8000${pkg.poster}`}\r\n+                  className={styles.pics}\r\n+                />\r\n+              </div>\r\n+              <div className={styles.details}>\r\n+                <p>{pkg.Name}</p>\r\n+                <p>{pkg.Description}</p>\r\n+                <p>Nrs.{pkg.Price}</p>\r\n+              </div>\r\n+              <div className={styles.btn}>\r\n+                <button>Book</button>\r\n+              </div>\r\n             </div>\r\n-            <div className={styles.details}>\r\n-              <p>{pkg.Name}</p>\r\n-              <p>{pkg.Description}</p>\r\n-              <p>Nrs.{pkg.Price}</p>\r\n-            </div>\r\n-            <div className={styles.btn}>\r\n-              <button>Book</button>\r\n-            </div>\r\n+\r\n+            <hr />\r\n           </div>\r\n         ))\r\n       ) : (\r\n         <p>No packages available</p>\r\n"
+                },
+                {
+                    "date": 1731429511209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,27 +24,23 @@\n \r\n       {packages.length > 0 ? (\r\n         packages.map((pkg) => (\r\n           <div key={pkg.id} className={styles.package}>\r\n-            <div>\r\n-              <div className={styles.picdiv}>\r\n-                <img\r\n-                  alt=\"Package\"\r\n-                  src={`http://127.0.0.1:8000${pkg.poster}`}\r\n-                  className={styles.pics}\r\n-                />\r\n-              </div>\r\n-              <div className={styles.details}>\r\n-                <p>{pkg.Name}</p>\r\n-                <p>{pkg.Description}</p>\r\n-                <p>Nrs.{pkg.Price}</p>\r\n-              </div>\r\n-              <div className={styles.btn}>\r\n-                <button>Book</button>\r\n-              </div>\r\n+            <div className={styles.picdiv}>\r\n+              <img\r\n+                alt=\"Package\"\r\n+                src={`http://127.0.0.1:8000${pkg.poster}`}\r\n+                className={styles.pics}\r\n+              />\r\n             </div>\r\n-\r\n-            <hr />\r\n+            <div className={styles.details}>\r\n+              <p>{pkg.Name}</p>\r\n+              <p>{pkg.Description}</p>\r\n+              <p>Nrs.{pkg.Price}</p>\r\n+            </div>\r\n+            <div className={styles.btn}>\r\n+              <button>Book</button>\r\n+            </div>\r\n           </div>\r\n         ))\r\n       ) : (\r\n         <p>No packages available</p>\r\n"
+                }
+            ],
+            "date": 1731424561597,
+            "name": "Commit-0",
+            "content": "export default function Package(){\r\n    return (<div></div>\r\n}"
+        }
+    ]
+}

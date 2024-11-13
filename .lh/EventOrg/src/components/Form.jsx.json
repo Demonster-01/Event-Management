@@ -1,0 +1,30 @@
+{
+    "sourceFile": "EventOrg/src/components/Form.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1731424409980,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731424416375,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n import styles from \"../module_css/Form.module.css\";\r\n export default function Form() {\r\n   return (\r\n     <div className={styles.formdiv}>\r\n-      <h1>Send your Detail</h1>\r\n       <form className={styles.form}>\r\n+        <h1>Send your Detail</h1>\r\n         <input type=\"number\" id=\"mobile\" placeholder=\"Mobile Number\" />\r\n         <input type=\"date\" id=\"date\" />\r\n         <input type=\"time\" id=\"time\" />\r\n         <input type=\"text\" id=\"address\" placeholder=\"Address\" />\r\n"
+                },
+                {
+                    "date": 1731424422567,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n export default function Form() {\r\n   return (\r\n     <div className={styles.formdiv}>\r\n       <form className={styles.form}>\r\n-        <h1>Send your Detail</h1>\r\n+        <h4>Send your Detail</h4>\r\n         <input type=\"number\" id=\"mobile\" placeholder=\"Mobile Number\" />\r\n         <input type=\"date\" id=\"date\" />\r\n         <input type=\"time\" id=\"time\" />\r\n         <input type=\"text\" id=\"address\" placeholder=\"Address\" />\r\n"
+                },
+                {
+                    "date": 1731424440720,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n export default function Form() {\r\n   return (\r\n     <div className={styles.formdiv}>\r\n       <form className={styles.form}>\r\n-        <h4>Send your Detail</h4>\r\n+        <h4>Send your Detail for more Info</h4>\r\n         <input type=\"number\" id=\"mobile\" placeholder=\"Mobile Number\" />\r\n         <input type=\"date\" id=\"date\" />\r\n         <input type=\"time\" id=\"time\" />\r\n         <input type=\"text\" id=\"address\" placeholder=\"Address\" />\r\n"
+                }
+            ],
+            "date": 1731424409980,
+            "name": "Commit-0",
+            "content": "import styles from \"../module_css/Form.module.css\";\r\nexport default function Form() {\r\n  return (\r\n    <div className={styles.formdiv}>\r\n      <h1>Send your Detail</h1>\r\n      <form className={styles.form}>\r\n        <input type=\"number\" id=\"mobile\" placeholder=\"Mobile Number\" />\r\n        <input type=\"date\" id=\"date\" />\r\n        <input type=\"time\" id=\"time\" />\r\n        <input type=\"text\" id=\"address\" placeholder=\"Address\" />\r\n        <textarea id=\"remarks\" placeholder=\"Remarks\"></textarea>\r\n        <button type=\"submit\" className={styles.btn}>\r\n          Add to planner\r\n        </button>\r\n        <button type=\"submit\" className={styles.btn}>\r\n          Order\r\n        </button>\r\n      </form>\r\n    </div>\r\n  );\r\n}\r\n"
+        }
+    ]
+}

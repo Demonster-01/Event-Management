@@ -1,0 +1,182 @@
+{
+    "sourceFile": "EventOrg/src/module_css/Package.module.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 41,
+            "patches": [
+                {
+                    "date": 1731426102348,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731426189782,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,9 @@\n .container {\r\n   width: 100%;\r\n   margin: 1rem;\r\n }\r\n+.package {\r\n+  display: flex;\r\n+}\r\n+.pic {\r\n+}\r\n"
+                },
+                {
+                    "date": 1731426198078,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,5 +5,6 @@\n .package {\r\n   display: flex;\r\n }\r\n .pic {\r\n+  width: 30%;\r\n }\r\n"
+                },
+                {
+                    "date": 1731426208478,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n   margin: 1rem;\r\n }\r\n .package {\r\n   display: flex;\r\n+  margin: 20px;\r\n }\r\n .pic {\r\n   width: 30%;\r\n }\r\n"
+                },
+                {
+                    "date": 1731426235107,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,4 +8,10 @@\n }\r\n .pic {\r\n   width: 30%;\r\n }\r\n+.details {\r\n+  width: 30%;\r\n+}\r\n+.btn {\r\n+  width: 20%;\r\n+}\r\n"
+                },
+                {
+                    "date": 1731426241203,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n .pic {\r\n   width: 30%;\r\n }\r\n .details {\r\n-  width: 30%;\r\n+  width: 50%;\r\n }\r\n .btn {\r\n   width: 20%;\r\n }\r\n"
+                },
+                {
+                    "date": 1731426255789,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n .container {\r\n   width: 100%;\r\n   margin: 1rem;\r\n+  color: #f7f4f4;\r\n }\r\n .package {\r\n   display: flex;\r\n   margin: 20px;\r\n"
+                },
+                {
+                    "date": 1731426289681,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n   margin: 20px;\r\n }\r\n .pic {\r\n   width: 30%;\r\n+  margin-right: 1px solid white;\r\n }\r\n .details {\r\n   width: 50%;\r\n }\r\n"
+                },
+                {
+                    "date": 1731426309883,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n   margin: 20px;\r\n }\r\n .pic {\r\n   width: 30%;\r\n-  margin-right: 1px solid white;\r\n+  border-right: 1px solid white;\r\n }\r\n .details {\r\n   width: 50%;\r\n }\r\n"
+                },
+                {
+                    "date": 1731426315940,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,10 @@\n   border-right: 1px solid white;\r\n }\r\n .details {\r\n   width: 50%;\r\n+  border-right: 1px solid white;\r\n }\r\n .btn {\r\n   width: 20%;\r\n+  border-right: 1px solid white;\r\n }\r\n"
+                },
+                {
+                    "date": 1731426327080,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,9 @@\n }\r\n .pic {\r\n   width: 30%;\r\n   border-right: 1px solid white;\r\n+  padding: 2rem;\r\n }\r\n .details {\r\n   width: 50%;\r\n   border-right: 1px solid white;\r\n"
+                },
+                {
+                    "date": 1731426338341,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,14 +9,16 @@\n }\r\n .pic {\r\n   width: 30%;\r\n   border-right: 1px solid white;\r\n-  padding: 2rem;\r\n+  padding: 10px;\r\n }\r\n .details {\r\n   width: 50%;\r\n   border-right: 1px solid white;\r\n+  padding: 10px;\r\n }\r\n .btn {\r\n   width: 20%;\r\n   border-right: 1px solid white;\r\n+  padding: 10px;\r\n }\r\n"
+                },
+                {
+                    "date": 1731426369459,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,19 +6,11 @@\n .package {\r\n   display: flex;\r\n   margin: 20px;\r\n }\r\n-.pic {\r\n+.pic,\r\n+.details,\r\n+.btn {\r\n   width: 30%;\r\n   border-right: 1px solid white;\r\n   padding: 10px;\r\n }\r\n-.details {\r\n-  width: 50%;\r\n-  border-right: 1px solid white;\r\n-  padding: 10px;\r\n-}\r\n-.btn {\r\n-  width: 20%;\r\n-  border-right: 1px solid white;\r\n-  padding: 10px;\r\n-}\r\n"
+                },
+                {
+                    "date": 1731426389229,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,4 +13,14 @@\n   width: 30%;\r\n   border-right: 1px solid white;\r\n   padding: 10px;\r\n }\r\n+.details {\r\n+  width: 50%;\r\n+  border-right: 1px solid white;\r\n+  padding: 10px;\r\n+}\r\n+.btn {\r\n+  width: 20%;\r\n+  border-right: 1px solid white;\r\n+  padding: 10px;\r\n+}\r\n"
+                },
+                {
+                    "date": 1731426402593,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,12 +9,14 @@\n }\r\n .pic,\r\n .details,\r\n .btn {\r\n-  width: 30%;\r\n   border-right: 1px solid white;\r\n   padding: 10px;\r\n }\r\n+.pics {\r\n+  width: 30%;\r\n+}\r\n .details {\r\n   width: 50%;\r\n   border-right: 1px solid white;\r\n   padding: 10px;\r\n"
+                },
+                {
+                    "date": 1731426407903,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,10 +17,8 @@\n   width: 30%;\r\n }\r\n .details {\r\n   width: 50%;\r\n-  border-right: 1px solid white;\r\n-  padding: 10px;\r\n }\r\n .btn {\r\n   width: 20%;\r\n   border-right: 1px solid white;\r\n"
+                },
+                {
+                    "date": 1731426420701,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,21 +6,20 @@\n .package {\r\n   display: flex;\r\n   margin: 20px;\r\n }\r\n-.pic,\r\n-.details,\r\n-.btn {\r\n-  border-right: 1px solid white;\r\n-  padding: 10px;\r\n-}\r\n+\r\n .pics {\r\n   width: 30%;\r\n }\r\n .details {\r\n   width: 50%;\r\n }\r\n .btn {\r\n   width: 20%;\r\n+}\r\n+.pic,\r\n+.details,\r\n+.btn {\r\n   border-right: 1px solid white;\r\n   padding: 10px;\r\n }\r\n"
+                },
+                {
+                    "date": 1731426429160,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   display: flex;\r\n   margin: 20px;\r\n }\r\n \r\n-.pics {\r\n+.pic {\r\n   width: 30%;\r\n }\r\n .details {\r\n   width: 50%;\r\n"
+                },
+                {
+                    "date": 1731426435879,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n   margin: 20px;\r\n }\r\n \r\n .pic {\r\n-  width: 30%;\r\n+  width: 20%;\r\n }\r\n .details {\r\n   width: 50%;\r\n }\r\n"
+                },
+                {
+                    "date": 1731426463391,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,12 +11,12 @@\n .pic {\r\n   width: 20%;\r\n }\r\n .details {\r\n-  width: 50%;\r\n+  width: 70%;\r\n }\r\n .btn {\r\n-  width: 20%;\r\n+  width: 10%;\r\n }\r\n .pic,\r\n .details,\r\n .btn {\r\n"
+                },
+                {
+                    "date": 1731426473096,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,9 @@\n   width: 70%;\r\n }\r\n .btn {\r\n   width: 10%;\r\n+  margin-right: 10px;\r\n }\r\n .pic,\r\n .details,\r\n .btn {\r\n"
+                },
+                {
+                    "date": 1731426494652,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,12 +15,11 @@\n   width: 70%;\r\n }\r\n .btn {\r\n   width: 10%;\r\n-  margin-right: 10px;\r\n+  margin-right: 50px;\r\n }\r\n .pic,\r\n-.details,\r\n-.btn {\r\n+.details {\r\n   border-right: 1px solid white;\r\n   padding: 10px;\r\n }\r\n"
+                },
+                {
+                    "date": 1731426500705,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,9 @@\n }\r\n .btn {\r\n   width: 10%;\r\n   margin-right: 50px;\r\n+  padding: 10px;\r\n }\r\n .pic,\r\n .details {\r\n   border-right: 1px solid white;\r\n"
+                },
+                {
+                    "date": 1731429095201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   display: flex;\r\n   margin: 20px;\r\n }\r\n \r\n-.pic {\r\n+.picdiv {\r\n   width: 20%;\r\n }\r\n .details {\r\n   width: 70%;\r\n@@ -18,9 +18,9 @@\n   width: 10%;\r\n   margin-right: 50px;\r\n   padding: 10px;\r\n }\r\n-.pic,\r\n+.picdiv,\r\n .details {\r\n   border-right: 1px solid white;\r\n   padding: 10px;\r\n }\r\n"
+                },
+                {
+                    "date": 1731429122894,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,4 +23,15 @@\n .details {\r\n   border-right: 1px solid white;\r\n   padding: 10px;\r\n }\r\n+\r\n+.pic{\r\n+\r\n+    width: \"100%\",\r\n+    maxWidth: \"700px\", // Example maximum width\r\n+    height: \"150px\",\r\n+    objectFit: \"cover\",\r\n+}\r\n+\r\n+style={{\r\n+  }}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1731429140873,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,14 +24,10 @@\n   border-right: 1px solid white;\r\n   padding: 10px;\r\n }\r\n \r\n-.pic{\r\n-\r\n-    width: \"100%\",\r\n-    maxWidth: \"700px\", // Example maximum width\r\n-    height: \"150px\",\r\n-    objectFit: \"cover\",\r\n+.pic {\r\n+  width: \"100%\";\r\n+  maxwidth: \"700px\";\r\n+  height: \"150px\";\r\n\\ No newline at end of file\n+  objectfit: \"cover\";\r\n }\r\n-\r\n-style={{\r\n-  }}\n"
+                },
+                {
+                    "date": 1731429147440,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,8 +26,8 @@\n }\r\n \r\n .pic {\r\n   width: \"100%\";\r\n-  maxwidth: \"700px\";\r\n+  max-width: \"700px\";\r\n   height: \"150px\";\r\n-  objectfit: \"cover\";\r\n\\ No newline at end of file\n-}\n+  object-fit: \"cover\";\r\n+}\r\n"
+                },
+                {
+                    "date": 1731429160137,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n   border-right: 1px solid white;\r\n   padding: 10px;\r\n }\r\n \r\n-.pic {\r\n+.pics {\r\n   width: \"100%\";\r\n   max-width: \"700px\";\r\n   height: \"150px\";\r\n   object-fit: \"cover\";\r\n"
+                },
+                {
+                    "date": 1731429169407,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n   padding: 10px;\r\n }\r\n \r\n .pics {\r\n-  width: \"100%\";\r\n+  /* width: \"100%\"; */\r\n   max-width: \"700px\";\r\n   height: \"150px\";\r\n   object-fit: \"cover\";\r\n }\r\n"
+                },
+                {
+                    "date": 1731429285570,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n   padding: 10px;\r\n }\r\n \r\n .pics {\r\n-  /* width: \"100%\"; */\r\n-  max-width: \"700px\";\r\n-  height: \"150px\";\r\n-  object-fit: \"cover\";\r\n+  width: 100%;\r\n+  max-width: 700px;\r\n+  height: 150px;\r\n+  object-fit: cover;\r\n }\r\n"
+                },
+                {
+                    "date": 1731429330282,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,9 @@\n }\r\n .package {\r\n   display: flex;\r\n   margin: 20px;\r\n+  border-bottom: 1px solid;\r\n }\r\n \r\n .picdiv {\r\n   width: 20%;\r\n"
+                },
+                {
+                    "date": 1731429348170,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,8 @@\n }\r\n .package {\r\n   display: flex;\r\n   margin: 20px;\r\n-  border-bottom: 1px solid;\r\n }\r\n \r\n .picdiv {\r\n   width: 20%;\r\n"
+                },
+                {
+                    "date": 1731429563069,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n   width: 20%;\r\n }\r\n .details {\r\n   width: 70%;\r\n+  box-shadow: 0 0 0 rgb(245, 244, 244);\r\n }\r\n .btn {\r\n   width: 10%;\r\n   margin-right: 50px;\r\n"
+                },
+                {
+                    "date": 1731429568433,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   width: 20%;\r\n }\r\n .details {\r\n   width: 70%;\r\n-  box-shadow: 0 0 0 rgb(245, 244, 244);\r\n+  box-shadow: 0 0 10px rgb(245, 244, 244);\r\n }\r\n .btn {\r\n   width: 10%;\r\n   margin-right: 50px;\r\n"
+                },
+                {
+                    "date": 1731429577210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   width: 20%;\r\n }\r\n .details {\r\n   width: 70%;\r\n-  box-shadow: 0 0 10px rgb(245, 244, 244);\r\n+  box-shadow: 0 0 10px rgba(245, 244, 244, 0.5);\r\n }\r\n .btn {\r\n   width: 10%;\r\n   margin-right: 50px;\r\n"
+                },
+                {
+                    "date": 1731429582713,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   width: 20%;\r\n }\r\n .details {\r\n   width: 70%;\r\n-  box-shadow: 0 0 10px rgba(245, 244, 244, 0.5);\r\n+  box-shadow: 0 0 110px rgba(245, 244, 244, 0.5);\r\n }\r\n .btn {\r\n   width: 10%;\r\n   margin-right: 50px;\r\n"
+                },
+                {
+                    "date": 1731429593341,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,16 +5,16 @@\n }\r\n .package {\r\n   display: flex;\r\n   margin: 20px;\r\n+  box-shadow: 0 0 110px rgba(245, 244, 244, 0.5);\r\n }\r\n \r\n .picdiv {\r\n   width: 20%;\r\n }\r\n .details {\r\n   width: 70%;\r\n-  box-shadow: 0 0 110px rgba(245, 244, 244, 0.5);\r\n }\r\n .btn {\r\n   width: 10%;\r\n   margin-right: 50px;\r\n"
+                },
+                {
+                    "date": 1731429619774,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,9 @@\n }\r\n \r\n .picdiv {\r\n   width: 20%;\r\n+  background-color: transparent;\r\n }\r\n .details {\r\n   width: 70%;\r\n }\r\n"
+                },
+                {
+                    "date": 1731429626175,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n   background-color: transparent;\r\n }\r\n .details {\r\n   width: 70%;\r\n+  background-color: transparent;\r\n }\r\n .btn {\r\n   width: 10%;\r\n   margin-right: 50px;\r\n"
+                },
+                {
+                    "date": 1731429642939,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,13 +10,11 @@\n }\r\n \r\n .picdiv {\r\n   width: 20%;\r\n-  background-color: transparent;\r\n }\r\n .details {\r\n   width: 70%;\r\n-  background-color: transparent;\r\n }\r\n .btn {\r\n   width: 10%;\r\n   margin-right: 50px;\r\n"
+                },
+                {
+                    "date": 1731429702597,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n }\r\n .package {\r\n   display: flex;\r\n   margin: 20px;\r\n-  box-shadow: 0 0 110px rgba(245, 244, 244, 0.5);\r\n+  box-shadow: 0 10px 10px rgba(245, 244, 244, 0.5);\r\n }\r\n \r\n .picdiv {\r\n   width: 20%;\r\n"
+                },
+                {
+                    "date": 1731429713346,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n }\r\n .package {\r\n   display: flex;\r\n   margin: 20px;\r\n-  box-shadow: 0 10px 10px rgba(245, 244, 244, 0.5);\r\n+  box-shadow: 0 10px 5px rgba(245, 244, 244, 0.5);\r\n }\r\n \r\n .picdiv {\r\n   width: 20%;\r\n"
+                }
+            ],
+            "date": 1731426102348,
+            "name": "Commit-0",
+            "content": ".container {\r\n  width: 100%;\r\n  margin: 1rem;\r\n}\r\n"
+        }
+    ]
+}

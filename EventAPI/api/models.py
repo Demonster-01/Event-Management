@@ -36,3 +36,20 @@ class OurWork(models.Model):
     
     def __str__(self):
         return self.Name
+    
+class Package(models.Model):
+    Name=models.CharField(max_length=50)
+    Description=models.CharField(max_length=1000)
+    Price=models.IntegerField(default=1000)
+    poster = models.ImageField(default="default.jpg", upload_to='Package_img')
+    
+    def __str__(self):
+        return self.Name
+    
+class PlannerList(models.Model):
+    booked_at = models.DateTimeField(auto_now_add=True)
+    venue = models.ForeignKey(Venue, on_delete=models.CASCADE, null=True, blank=True)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True, blank=True)
+    #host
+    def __str__(self):
+        return f"Venue: {self.venue} - Service: {self.service}" if self.venue and self.service else str(self.venue or self.service)

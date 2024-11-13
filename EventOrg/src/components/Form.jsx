@@ -3,6 +3,7 @@ export default function Form() {
   return (
     <div className={styles.formdiv}>
       <form className={styles.form}>
+        <h4>Send your Detail for more Info</h4>
         <input type="number" id="mobile" placeholder="Mobile Number" />
         <input type="date" id="date" />
         <input type="time" id="time" />

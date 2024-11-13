@@ -14,7 +14,7 @@ export default function ServiceBox({ showAllServices = false }) {
       .get("http://127.0.0.1:8000/api/services/")
       .then((response) => {
         setServices(
-          showAllServices ? response.data : response.data.slice(0, 6)
+          showAllServices ? response.data : response.data.slice(0, 3)
         );
       })
       .catch((error) => {
@@ -31,32 +31,37 @@ export default function ServiceBox({ showAllServices = false }) {
         {!showAllServices && <Link to="/service-gallery">More Service...</Link>}
       </div>
       {error && <p className={styles.error}>{error}</p>}
-      <div className={styles.container}>
-        {services.map((service) => (
-          <div key={service.id} className={styles.serviceItem}>
-            <img
-              src={
-                service.poster
-                  ? `http://127.0.0.1:8000${service.poster}`
-                  : hallImage
-              }
-              alt={service.Name}
-              className={styles.image}
-            />
-            <div className={styles.overlay}>
-              <span>
-                {service.Type}-{service.Name}
-              </span>
-              <p>
-                {service.keywords}
-                <br />
-                <Link to={`/service-detail/${service.id}`}>More ...</Link>
-              </p>
+      {services.length > 0 ? (
+        <div className={styles.container}>
+          {services.map((service) => (
+            <div key={service.id} className={styles.serviceItem}>
+              <img
+                src={
+                  service.poster
+                    ? `http://127.0.0.1:8000${service.poster}`
+                    : hallImage
+                }
+                alt={service.Name}
+                className={styles.image}
+              />
+              <div className={styles.overlay}>
+                <span>
+                  {service.Type}-{service.Name}
+                </span>
+                <p>
+                  {service.keywords}
+                  <br />
+                  <Link to={`/service-detail/${service.id}`}>More ...</Link>
+                </p>
+              </div>
+              <span className={styles.serviceName}>{service.Name}</span>
             </div>
-            <span className={styles.serviceName}>{service.Name}</span>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <p>No Service Available</p>
+      )}
+
       <hr />
     </div>
   );
