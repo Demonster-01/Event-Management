@@ -1,0 +1,18 @@
+{
+    "sourceFile": "EventAPI/api/admin.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1731426734130,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1731426734130,
+            "name": "Commit-0",
+            "content": "from django.contrib import admin\r\nfrom .models import Venue, Service, OurWork,Package\r\n# Register your models here.\r\nadmin.site.register(Venue)\r\nadmin.site.register(Service)\r\nadmin.site.register(OurWork)\r\nadmin.site.register(Package)"
+        }
+    ]
+}

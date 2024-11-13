@@ -1,8 +1,49 @@
 {
-  "hash": "33c9a1fe",
+  "hash": "53a0b088",
   "configHash": "d72ca196",
-  "lockfileHash": "e3b0c442",
-  "browserHash": "98a617bd",
-  "optimized": {},
-  "chunks": {}
+  "lockfileHash": "090aae05",
+  "browserHash": "17c05ee1",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "2486db62",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "ab0a3d96",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "fc18c844",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "c85e108c",
+      "needsInterop": false
+    },
+    "react-slider": {
+      "src": "../../../node_modules/react-slider/dist/es/dev/index.mjs",
+      "file": "react-slider.js",
+      "fileHash": "f8d946bb",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-32E4H3EV": {
+      "file": "chunk-32E4H3EV.js"
+    },
+    "chunk-AHEUJZNM": {
+      "file": "chunk-AHEUJZNM.js"
+    },
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
+    }
+  }
 }

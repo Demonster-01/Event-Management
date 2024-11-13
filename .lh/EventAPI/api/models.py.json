@@ -1,0 +1,18 @@
+{
+    "sourceFile": "EventAPI/api/models.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1731426706731,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1731426706731,
+            "name": "Commit-0",
+            "content": "from django.db import models\r\n\r\n# Create your models here.\r\nclass Venue(models.Model):\r\n    Name=models.CharField(max_length=50)\r\n    Location=models.CharField(max_length=50)\r\n    Booking_price=models.IntegerField(default=1000)\r\n    No_of_Halls=models.IntegerField(default=1)\r\n    Capacity=models.IntegerField(default=1000)\r\n    Area = models.IntegerField(default=1000)\r\n    Parking= models.BooleanField(null=False, default=False)\r\n    Poster = models.ImageField( null=True, upload_to='Venue_img')\r\n    \r\n    class Meta:\r\n        unique_together = ('Name', 'Location')\r\n\r\n    def __str__(self):\r\n        return self.Name\r\n    \r\n    \r\nclass Service(models.Model):\r\n    Name=models.CharField(max_length=50)\r\n    Type=models.CharField(max_length=50)\r\n    Description=models.CharField(max_length=1000)\r\n    keywords=models.CharField(max_length=100, null=True, blank=True)\r\n    Price=models.IntegerField(default=1000)\r\n    poster = models.ImageField(default=\"default.jpg\", upload_to='service_img')\r\n    \r\n    def __str__(self):\r\n        return self.Name\r\n    \r\nclass OurWork(models.Model):\r\n    Name=models.CharField(max_length=50)\r\n    poster = models.ImageField(default=\"default.jpg\", upload_to='Our Work')\r\n    created_at = models.DateTimeField(auto_now_add=True)\r\n    \r\n    def __str__(self):\r\n        return self.Name\r\n    \r\nclass Package(models.Model):\r\n    Name=models.CharField(max_length=50)\r\n    Description=models.CharField(max_length=1000)\r\n    Price=models.IntegerField(default=1000)\r\n    poster = models.ImageField(default=\"default.jpg\", upload_to='Package_img')\r\n    \r\n    def __str__(self):\r\n        return self.Name"
+        }
+    ]
+}

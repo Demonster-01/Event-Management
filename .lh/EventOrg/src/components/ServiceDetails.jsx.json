@@ -1,0 +1,22 @@
+{
+    "sourceFile": "EventOrg/src/components/ServiceDetails.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1731420370825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731420619151,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,21 @@\n+import { useParams } from \"react-router-dom\";\r\n import styles from \"../module_css/ServiceDetail.module.css\";\r\n import Form from \"./Form\";\r\n-import ServiceBox from \"./ServiceBox\";\r\n import ServiceComponent from \"./ServiceComponent\";\r\n-import { useParams } from \"react-router-dom\";\r\n+\r\n export default function ServiceDetails() {\r\n-  const { id } = useParams();\r\n+  const { id } = useParams(); // Get the service ID from the URL\r\n+\r\n   return (\r\n     <div className={styles.container}>\r\n-      <ServiceBox showAllServices={true} />\r\n+      <div className={styles.section}>\r\n+        <div className={styles.servicediv}>\r\n+          <ServiceComponent id={id} />\r\n+        </div>\r\n+        <div className={styles.formdiv}>\r\n+          <Form />\r\n+        </div>\r\n+      </div>\r\n     </div>\r\n   );\r\n }\r\n"
+                }
+            ],
+            "date": 1731420370825,
+            "name": "Commit-0",
+            "content": "import styles from \"../module_css/ServiceDetail.module.css\";\r\nimport Form from \"./Form\";\r\nimport ServiceBox from \"./ServiceBox\";\r\nimport ServiceComponent from \"./ServiceComponent\";\r\nimport { useParams } from \"react-router-dom\";\r\nexport default function ServiceDetails() {\r\n  const { id } = useParams();\r\n  return (\r\n    <div className={styles.container}>\r\n      <ServiceBox showAllServices={true} />\r\n    </div>\r\n  );\r\n}\r\n"
+        }
+    ]
+}

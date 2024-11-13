@@ -1,0 +1,29 @@
+.container {
+  display: "flex";
+  justify-content: "center";
+  gap: "20px";
+}
+
+.img {
+  width: 400px;
+  aspect-ratio: 6/7;
+  object-fit: contain;
+}
+/* style={{ width: "400px", aspectRatio: "3/3", objectFit: "contain" }} */
+
+.section {
+  display: flex;
+}
+.images {
+  display: flex;
+  margin: 0 1em;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 10px; */
+}
+
+.heading {
+  font-size: 2rem;
+  color: aliceblue;
+  text-align: center;
+}
