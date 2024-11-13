@@ -1,0 +1,22 @@
+{
+    "sourceFile": "EventOrg/src/module_css/Nav.module.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1731425748043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731425766061,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,5 +62,6 @@\n }\r\n \r\n .links {\r\n   text-decoration: none;\r\n+  color: #d2dbf5;\r\n }\r\n"
+                }
+            ],
+            "date": 1731425748043,
+            "name": "Commit-0",
+            "content": ".container {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin-top: 10px;\r\n  margin-bottom: 0px;\r\n  padding: 0 1rem;\r\n}\r\n.navContainer {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  width: 100%;\r\n  max-width: 1200px; /* Adjust as needed */\r\n}\r\n.navbar {\r\n  color: #d2dbf5;\r\n  font-size: 1.3rem;\r\n  font-family: \"Oranienbaum\";\r\n  margin-left: 50px;\r\n}\r\n\r\n.nav_list {\r\n  display: flex;\r\n  list-style-type: none;\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\n.nav_item {\r\n  margin-right: 1.5rem;\r\n  color: 404a42;\r\n  cursor: pointer;\r\n}\r\n\r\n.nav_item:hover,\r\n.btn:hover {\r\n  text-shadow: 2px 2px 5px rgba(238, 240, 233, 0.884);\r\n  cursor: pointer;\r\n  transition: color 0.3s ease;\r\n}\r\n\r\n.btngroup {\r\n  display: flex;\r\n  gap: 1rem;\r\n  margin-right: 50px;\r\n}\r\n\r\n.btn {\r\n  font-family: \"Oranienbaum\";\r\n  font-size: 1.3rem;\r\n  border: none;\r\n  padding: 10px;\r\n  background-color: transparent;\r\n  color: #d2dbf5;\r\n}\r\n\r\n.logo {\r\n  color: white;\r\n  font-size: 2rem;\r\n  margin-right: 150px;\r\n}\r\n\r\n.links {\r\n  text-decoration: none;\r\n}\r\n"
+        }
+    ]
+}

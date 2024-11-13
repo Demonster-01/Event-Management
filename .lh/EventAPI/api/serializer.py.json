@@ -1,0 +1,18 @@
+{
+    "sourceFile": "EventAPI/api/serializer.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1731427078821,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1731427078821,
+            "name": "Commit-0",
+            "content": "# serializers.py\r\nfrom rest_framework import serializers\r\nfrom .models import Venue,Service,OurWork,Package\r\n\r\nclass VenueSerializer(serializers.ModelSerializer):\r\n    class Meta:\r\n        model = Venue\r\n        fields = ['id', 'Name', 'Location', 'Capacity','No_of_Halls','Area','Parking','Booking_price','Poster']\r\n\r\nclass ServiceSerializer(serializers.ModelSerializer):\r\n    class Meta:\r\n        model = Service\r\n        fields = ['id', 'Name','Type', 'Description', 'Price','poster','keywords']\r\n        \r\n    def get_poster_url(self, obj):\r\n        request = self.context.get('request')\r\n        if obj.poster and request:\r\n            return request.build_absolute_uri(obj.poster.url)\r\n        return None\r\n    \r\nclass OurWorkSerializer(serializers.ModelSerializer):\r\n    class Meta:\r\n        model = OurWork\r\n        fields = ['id', 'Name', 'poster', 'created_at']\r\n        \r\nclass PackageSerializer(serializers.ModelSerializer):\r\n    class Meta:\r\n        model= Package\r\n        fields = ['id', 'Name', 'Description', 'Price','poster']"
+        }
+    ]
+}

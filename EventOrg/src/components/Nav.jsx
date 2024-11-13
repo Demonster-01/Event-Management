@@ -8,7 +8,11 @@ export default function Nav() {
         <nav className={styles.navbar}>
           <ul className={styles.nav_list}>
             <li className={styles.nav_item}>Explore</li>
-            <li className={styles.nav_item}>Package</li>
+            <li className={styles.nav_item}>
+              <Link className={styles.links} to="/package">
+                Package
+              </Link>
+            </li>
             <li className={styles.nav_item}>Custom Booking</li>
             <li className={styles.nav_item}>Contact</li>
           </ul>
@@ -19,7 +23,11 @@ export default function Nav() {
         </div>
 
         <div className={styles.btngroup}>
-          <button className={styles.btn}>Planner</button>
+          <button className={styles.btn}>
+            <Link className={styles.links} to="/planner-list">
+              Planner
+            </Link>
+          </button>
           <button className={styles.btn}>Sign In</button>
         </div>
       </div>

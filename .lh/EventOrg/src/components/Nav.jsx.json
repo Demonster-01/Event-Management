@@ -1,0 +1,34 @@
+{
+    "sourceFile": "EventOrg/src/components/Nav.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1731425664843,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731425677170,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n           <ul className={styles.nav_list}>\r\n             <li className={styles.nav_item}>Explore</li>\r\n             <li className={styles.nav_item}>\r\n               {\" \"}\r\n-              <Link to=\"/package\">More Service...</Link>}Package\r\n+              <Link to=\"/package\">More Service...</Link>Package\r\n             </li>\r\n             <li className={styles.nav_item}>Custom Booking</li>\r\n             <li className={styles.nav_item}>Contact</li>\r\n           </ul>\r\n"
+                },
+                {
+                    "date": 1731425690812,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n           <ul className={styles.nav_list}>\r\n             <li className={styles.nav_item}>Explore</li>\r\n             <li className={styles.nav_item}>\r\n               {\" \"}\r\n-              <Link to=\"/package\">More Service...</Link>Package\r\n+              <Link to=\"/package\">Package</Link>\r\n             </li>\r\n             <li className={styles.nav_item}>Custom Booking</li>\r\n             <li className={styles.nav_item}>Contact</li>\r\n           </ul>\r\n"
+                },
+                {
+                    "date": 1731425703422,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,8 @@\n         <nav className={styles.navbar}>\r\n           <ul className={styles.nav_list}>\r\n             <li className={styles.nav_item}>Explore</li>\r\n             <li className={styles.nav_item}>\r\n-              {\" \"}\r\n               <Link to=\"/package\">Package</Link>\r\n             </li>\r\n             <li className={styles.nav_item}>Custom Booking</li>\r\n             <li className={styles.nav_item}>Contact</li>\r\n"
+                },
+                {
+                    "date": 1731425738244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,11 @@\n         <nav className={styles.navbar}>\r\n           <ul className={styles.nav_list}>\r\n             <li className={styles.nav_item}>Explore</li>\r\n             <li className={styles.nav_item}>\r\n-              <Link to=\"/package\">Package</Link>\r\n+              <Link className={styles.links} to=\"/package\">\r\n+                Package\r\n+              </Link>\r\n             </li>\r\n             <li className={styles.nav_item}>Custom Booking</li>\r\n             <li className={styles.nav_item}>Contact</li>\r\n           </ul>\r\n"
+                }
+            ],
+            "date": 1731425664843,
+            "name": "Commit-0",
+            "content": "import styles from \"../module_css/Nav.module.css\";\r\nimport { Link } from \"react-router-dom\";\r\n\r\nexport default function Nav() {\r\n  return (\r\n    <div className={styles.container}>\r\n      <div className={styles.navContainer}>\r\n        <nav className={styles.navbar}>\r\n          <ul className={styles.nav_list}>\r\n            <li className={styles.nav_item}>Explore</li>\r\n            <li className={styles.nav_item}>\r\n              {\" \"}\r\n              <Link to=\"/package\">More Service...</Link>}Package\r\n            </li>\r\n            <li className={styles.nav_item}>Custom Booking</li>\r\n            <li className={styles.nav_item}>Contact</li>\r\n          </ul>\r\n        </nav>\r\n\r\n        <div className={styles.logo}>\r\n          <Link to={`/`}>Logo</Link>\r\n        </div>\r\n\r\n        <div className={styles.btngroup}>\r\n          <button className={styles.btn}>Planner</button>\r\n          <button className={styles.btn}>Sign In</button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n"
+        }
+    ]
+}

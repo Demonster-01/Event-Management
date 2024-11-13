@@ -1,6 +1,6 @@
 # serializers.py
 from rest_framework import serializers
-from .models import Venue,Service,OurWork
+from .models import Venue,Service,OurWork,Package,PlannerList
 
 class VenueSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,3 +22,16 @@ class OurWorkSerializer(serializers.ModelSerializer):
     class Meta:
         model = OurWork
         fields = ['id', 'Name', 'poster', 'created_at']
+        
+class PackageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model= Package
+        fields = ['id', 'Name', 'Description', 'Price','poster']
+        
+class PlannerListSerializer(serializers.ModelSerializer):
+    venue = VenueSerializer()
+    service = ServiceSerializer()
+
+    class Meta:
+        model = PlannerList
+        fields = ['id', 'booked_at', 'venue', 'service']

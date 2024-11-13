@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1731420256557,
@@ -28,6 +28,10 @@
                 {
                     "date": 1731420870465,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,9 @@\n import Contact from \"./components/Contact\";\r\n import VenueGallery from \"./components/VenueGallery\"; // Import VenueGallery component\r\n import ServiceBox from \"./components/ServiceBox\";\r\n import ServiceDetails from \"./components/ServiceDetails\";\r\n+import Service_gallery from \"./components/Service_gallery\";\r\n import OurWork from \"./components/OurWork\";\r\n import Footer from \"./components/Footer\";\r\n \r\n function App() {\r\n"
+                },
+                {
+                    "date": 1731425554089,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n import ServiceDetails from \"./components/ServiceDetails\";\r\n import Service_gallery from \"./components/Service_gallery\";\r\n import OurWork from \"./components/OurWork\";\r\n import Footer from \"./components/Footer\";\r\n+import Package from \"./components/Package\";\r\n \r\n function App() {\r\n   return (\r\n     <div className=\"App\">\r\n@@ -37,8 +38,9 @@\n           {/* <Route path=\"/service-detail/\" element={<ServiceDetails />} /> */}\r\n \r\n           <Route path=\"/service-detail/:id\" element={<ServiceDetails />} />\r\n           <Route path=\"/service-gallery/\" element={<Service_gallery />} />\r\n+          <Route path=\"/package/\" element={<Package />} />\r\n         </Routes>\r\n       </BrowserRouter>\r\n     </div>\r\n   );\r\n"
                 }
             ],
             "date": 1731420256557,

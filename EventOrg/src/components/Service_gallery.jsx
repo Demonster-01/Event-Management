@@ -1,9 +1,9 @@
-import ItemBox from "./ServiceBox";
+import ServiceBox from "./ServiceBox";
 
 export default function VenueGallery() {
   return (
     <div>
-      <ServiceBox showAllVenues={true} />
+      <ServiceBox showAllServices={true} />
     </div>
   );
 }

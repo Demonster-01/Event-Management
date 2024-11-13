@@ -13,6 +13,8 @@ import ServiceDetails from "./components/ServiceDetails";
 import Service_gallery from "./components/Service_gallery";
 import OurWork from "./components/OurWork";
 import Footer from "./components/Footer";
+import Package from "./components/Package";
+import PlannerList from "./components/PlannerList";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
 
           <Route path="/service-detail/:id" element={<ServiceDetails />} />
           <Route path="/service-gallery/" element={<Service_gallery />} />
+          <Route path="/package/" element={<Package />} />
+          <Route path="/planner-list/" element={<PlannerList />} />
         </Routes>
       </BrowserRouter>
     </div>
