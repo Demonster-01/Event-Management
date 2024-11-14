@@ -3,6 +3,8 @@ import axios from "axios";
 import styles from "../module_css/ServiceComponent.module.css";
 import hallImage from "../assets/images/hall.jpg";
 
+import AddToPlannerButton from "./AddToPlannerButton";
+
 export default function ServiceComponent({ id }) {
   const [service, setService] = useState(null);
 
@@ -53,6 +55,8 @@ export default function ServiceComponent({ id }) {
         </div>
         <div className={styles.description}>{service.Description}</div>
       </div>
+
+      <AddToPlannerButton packageId={service.id} itemType="service" />
     </div>
   );
 }

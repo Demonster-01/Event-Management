@@ -1,0 +1,20 @@
+.btndiv {
+  width: 100%;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: flex-end;
+}
+.btn {
+  background-color: rgb(124, 33, 33);
+  color: #ddd;
+  width: 8rem;
+  height: auto;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.5rem;
+}
+.btn:hover {
+  outline: 1px solid yellow;
+  background-color: rgb(119, 3, 3);
+  transform: scale(1.1);
+}

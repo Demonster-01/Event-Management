@@ -42,14 +42,36 @@ class Package(models.Model):
     Description=models.CharField(max_length=1000)
     Price=models.IntegerField(default=1000)
     poster = models.ImageField(default="default.jpg", upload_to='Package_img')
+    services = models.ManyToManyField(Service, related_name='packages')
     
     def __str__(self):
         return self.Name
+    
+
+
+
+class User(models.Model):
+    username = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(max_length=100, unique=True)
+    password = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.username
     
 class PlannerList(models.Model):
     booked_at = models.DateTimeField(auto_now_add=True)
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE, null=True, blank=True)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True, blank=True)
-    #host
+    package= models.ForeignKey(Package, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    session_id = models.CharField(max_length=100, null=True, blank=True)  # For anonymous users
+
     def __str__(self):
-        return f"Venue: {self.venue} - Service: {self.service}" if self.venue and self.service else str(self.venue or self.service)
+        if self.venue:
+            return f"Venue: {self.venue.Name}"
+        elif self.service:
+            return f"Service: {self.service.Name}"
+        elif self.package:
+            return f"Package: {self.package.Name}"
+        else:
+            return "No venue, service, or package"

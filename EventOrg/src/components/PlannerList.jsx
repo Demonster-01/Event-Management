@@ -8,6 +8,7 @@ export default function PlannerList() {
   const [error, setError] = useState(null);
   const [showVenues, setShowVenues] = useState(false);
   const [showServices, setShowServices] = useState(false);
+  const [showPackages, setShowPackages] = useState(false); // Add this state for Packages section
 
   useEffect(() => {
     setLoading(true);
@@ -27,7 +28,8 @@ export default function PlannerList() {
 
   const venues = planners.filter((item) => item.venue);
   const services = planners.filter((item) => item.service);
-  const totalItems = venues.length + services.length;
+  const pkgs = planners.filter((item) => item.package);
+  const totalItems = venues.length + services.length + pkgs.length; // Add pkgs to the total
 
   return (
     <div className={styles.planner_list_container}>
@@ -64,7 +66,7 @@ export default function PlannerList() {
                       <p>Parking: {venueItem.venue.Parking ? "Yes" : "No"}</p>
                       <div className={styles.btndiv}>
                         <button className={styles.btn}>
-                          <i class="bi bi-trash3-fill"></i>
+                          <i className="bi bi-trash3-fill"></i>
                         </button>
                       </div>
                     </div>
@@ -99,12 +101,51 @@ export default function PlannerList() {
                       <p>Price: ${serviceItem.service.Price}</p>
                       <div className={styles.btndiv}>
                         <button className={styles.btn}>
-                          <i class="bi bi-trash3-fill"></i>
+                          <i className="bi bi-trash3-fill"></i>
                         </button>
                       </div>
                     </div>
                   </div>
                 ))}
+              </div>
+            )}
+          </div>
+
+          {/* Package Section */}
+          <div className={styles.section}>
+            <div
+              className={styles.section_header}
+              onClick={() => setShowPackages(!showPackages)} // Use showPackages state
+            >
+              <h2>Packages</h2>
+              <span className={styles.item_count}>({pkgs.length})</span>
+            </div>
+            {showPackages && ( // Check showPackages instead of showServices
+              <div className={styles.section_content}>
+                {pkgs.map(
+                  (packageItem) =>
+                    packageItem.package && ( // Check if package is not null
+                      <div key={packageItem.id} className={styles.planner_card}>
+                        <img
+                          src={`http://127.0.0.1:8000${packageItem.package?.poster}`}
+                          alt="Package Poster"
+                          className={styles.planner_image}
+                        />
+                        <div className={styles.planner_details}>
+                          {" "}
+                          <h3>{packageItem.package.Name}</h3>
+                          <p>Type: {packageItem.package.Type}</p>
+                          <p>Description: {packageItem.package.Description}</p>
+                          <p>Price: ${packageItem.package.Price}</p>
+                          <div className={styles.btndiv}>
+                            <button className={styles.btn}>
+                              <i className="bi bi-trash3-fill"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                )}
               </div>
             )}
           </div>

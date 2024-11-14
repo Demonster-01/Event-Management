@@ -1,0 +1,134 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 2rem;
+}
+
+.header {
+  display: flex;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 2rem;
+  padding: 10px 2px;
+  border-bottom: 1px solid;
+}
+
+.dropdownContainer {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+.searchInput {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.serviceList {
+  width: 50%;
+}
+
+.serviceList ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.serviceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.addButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.addButton:hover {
+  background-color: #218838;
+}
+
+.selectedServicesBox {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.selectedServicesBox h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.selectedServicesBox ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selectedServicesBox li {
+  margin-bottom: 5px;
+  color: #555;
+}
+.removeButton {
+  margin-left: 10px;
+  background-color: #ff6666;
+  color: white;
+  border: none;
+  padding: 0 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn {
+  margin: 20px;
+  background-color: rgba(15, 173, 99, 0.658);
+  color: #e9eaeb;
+  /* width: 4rem; */
+  height: auto;
+  border: none;
+  border-radius: 20px;
+  font-size: 2rem;
+}
+.btn:hover {
+  outline: 1px solid yellow;
+}
+.imgfield {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.imagePreview {
+  width: 100px;
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.messageContainer {
+  margin-top: 20px;
+}
+
+.successMessage {
+  color: green;
+  font-weight: bold;
+}
+
+.errorMessage {
+  color: red;
+  font-weight: bold;
+}

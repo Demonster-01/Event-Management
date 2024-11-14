@@ -24,14 +24,18 @@ class OurWorkSerializer(serializers.ModelSerializer):
         fields = ['id', 'Name', 'poster', 'created_at']
         
 class PackageSerializer(serializers.ModelSerializer):
+    services = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), many=True)
+
     class Meta:
-        model= Package
-        fields = ['id', 'Name', 'Description', 'Price','poster']
-        
+        model = Package
+        fields = ['id', 'Name', 'Description', 'Price', 'poster', 'services']
+
 class PlannerListSerializer(serializers.ModelSerializer):
     venue = VenueSerializer()
     service = ServiceSerializer()
+    package = PackageSerializer()
+    # package = serializers.PrimaryKeyRelatedField(queryset=Package.objects.all())
 
     class Meta:
-        model = PlannerList
-        fields = ['id', 'booked_at', 'venue', 'service']
+        model = PlannerList 
+        fields = ['id', 'booked_at', 'venue', 'service', 'user', 'package','session_id']

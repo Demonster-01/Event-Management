@@ -15,6 +15,7 @@ import OurWork from "./components/OurWork";
 import Footer from "./components/Footer";
 import Package from "./components/Package";
 import PlannerList from "./components/PlannerList";
+import PackageCreate from "./components/PackageCreate";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path="/service-gallery/" element={<Service_gallery />} />
           <Route path="/package/" element={<Package />} />
           <Route path="/planner-list/" element={<PlannerList />} />
+          <Route path="/create-package/" element={<PackageCreate />} />
         </Routes>
       </BrowserRouter>
     </div>

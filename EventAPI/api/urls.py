@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import ( sample_view,hello_view,VenueView,
                     VenueCreateView,UpdateVenueView,ServiceView,
-                    ServiceDetailView,OurWorkListView,PackageView ,PlannerListView)
+                    ServiceDetailView,OurWorkListView,PackageView,PackageCreateView ,PlannerListView,AddToPlannerView)
 
 
 urlpatterns = [
@@ -13,6 +13,8 @@ urlpatterns = [
     path('service/<int:id>/', ServiceDetailView.as_view(), name='service-detail'),
     path('our-work/', OurWorkListView.as_view(), name='our-work-list'),
     path('package/',PackageView.as_view(),name='package'),
+    path('package-create/', PackageCreateView.as_view(), name='package-create'),
+    path('add_to_planner/', AddToPlannerView.as_view(), name='add_to_planner'),
     path('planner-list/',PlannerListView.as_view(),name='planner-list'),
 ]
 
