@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 11,
             "patches": [
                 {
                     "date": 1731425664843,
@@ -24,6 +24,34 @@
                 {
                     "date": 1731425738244,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,11 @@\n         <nav className={styles.navbar}>\r\n           <ul className={styles.nav_list}>\r\n             <li className={styles.nav_item}>Explore</li>\r\n             <li className={styles.nav_item}>\r\n-              <Link to=\"/package\">Package</Link>\r\n+              <Link className={styles.links} to=\"/package\">\r\n+                Package\r\n+              </Link>\r\n             </li>\r\n             <li className={styles.nav_item}>Custom Booking</li>\r\n             <li className={styles.nav_item}>Contact</li>\r\n           </ul>\r\n"
+                },
+                {
+                    "date": 1731927728123,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,10 +22,19 @@\n           <Link to={`/`}>Logo</Link>\r\n         </div>\r\n \r\n         <div className={styles.btngroup}>\r\n-          <button className={styles.btn}>Planner</button>\r\n-          <button className={styles.btn}>Sign In</button>\r\n+          <button className={styles.btn}>\r\n+            <Link className={styles.links} to=\"/planner-list\">\r\n+              Planner\r\n+            </Link>\r\n+          </button>\r\n+          <button className={styles.btn}>\r\n+            {\" \"}\r\n+            <Link className={styles.links} to=\"/planner-list\">\r\n+              Planner\r\n+            </Link>\r\n+          </button>\r\n         </div>\r\n       </div>\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1731927738254,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,10 +29,10 @@\n             </Link>\r\n           </button>\r\n           <button className={styles.btn}>\r\n             {\" \"}\r\n-            <Link className={styles.links} to=\"/planner-list\">\r\n-              Planner\r\n+            <Link className={styles.links} to=\"/login\">\r\n+              Login\r\n             </Link>\r\n           </button>\r\n         </div>\r\n       </div>\r\n"
+                },
+                {
+                    "date": 1731935761251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,8 +33,14 @@\n             <Link className={styles.links} to=\"/login\">\r\n               Login\r\n             </Link>\r\n           </button>\r\n+          <button className={styles.btn}>\r\n+            {\" \"}\r\n+            <Link className={styles.links} to=\"/logout\">\r\n+              Logout\r\n+            </Link>\r\n+          </button>\r\n         </div>\r\n       </div>\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1731935811903,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,14 +33,14 @@\n             <Link className={styles.links} to=\"/login\">\r\n               Login\r\n             </Link>\r\n           </button>\r\n-          <button className={styles.btn}>\r\n+          {/* <button className={styles.btn}>\r\n             {\" \"}\r\n             <Link className={styles.links} to=\"/logout\">\r\n               Logout\r\n             </Link>\r\n-          </button>\r\n+          </button> */}\r\n         </div>\r\n       </div>\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1731936009154,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,12 @@\n+import React from \"react\";\r\n import styles from \"../module_css/Nav.module.css\";\r\n import { Link } from \"react-router-dom\";\r\n \r\n export default function Nav() {\r\n+  // Check if the user is logged in by looking for the JWT token in localStorage\r\n+  const authToken = localStorage.getItem(\"authToken\");\r\n+\r\n   return (\r\n     <div className={styles.container}>\r\n       <div className={styles.navContainer}>\r\n         <nav className={styles.navbar}>\r\n@@ -27,20 +31,24 @@\n             <Link className={styles.links} to=\"/planner-list\">\r\n               Planner\r\n             </Link>\r\n           </button>\r\n-          <button className={styles.btn}>\r\n-            {\" \"}\r\n-            <Link className={styles.links} to=\"/login\">\r\n-              Login\r\n-            </Link>\r\n-          </button>\r\n-          {/* <button className={styles.btn}>\r\n-            {\" \"}\r\n-            <Link className={styles.links} to=\"/logout\">\r\n-              Logout\r\n-            </Link>\r\n-          </button> */}\r\n+\r\n+          {/* Conditionally render login button or JWT token */}\r\n+          {authToken ? (\r\n+            <button className={styles.btn}>\r\n+              {/* Display JWT token or a custom message */}\r\n+              <span className={styles.links}>Logged in</span>\r\n+              {/* Or display JWT token directly */}\r\n+              {/* <span className={styles.links}>{authToken}</span> */}\r\n+            </button>\r\n+          ) : (\r\n+            <button className={styles.btn}>\r\n+              <Link className={styles.links} to=\"/login\">\r\n+                Login\r\n+              </Link>\r\n+            </button>\r\n+          )}\r\n         </div>\r\n       </div>\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1731936021313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n             <button className={styles.btn}>\r\n               {/* Display JWT token or a custom message */}\r\n               <span className={styles.links}>Logged in</span>\r\n               {/* Or display JWT token directly */}\r\n-              {/* <span className={styles.links}>{authToken}</span> */}\r\n+              <span className={styles.links}>{authToken}</span>\r\n             </button>\r\n           ) : (\r\n             <button className={styles.btn}>\r\n               <Link className={styles.links} to=\"/login\">\r\n"
+                },
+                {
+                    "date": 1731936028816,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n           {/* Conditionally render login button or JWT token */}\r\n           {authToken ? (\r\n             <button className={styles.btn}>\r\n               {/* Display JWT token or a custom message */}\r\n-              <span className={styles.links}>Logged in</span>\r\n+              <span className={styles.links}>Logged in-</span>\r\n               {/* Or display JWT token directly */}\r\n               <span className={styles.links}>{authToken}</span>\r\n             </button>\r\n           ) : (\r\n"
                 }
             ],
             "date": 1731425664843,

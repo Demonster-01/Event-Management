@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1731427228376,
@@ -16,6 +16,22 @@
                 {
                     "date": 1731427346342,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,8 @@\n from django.urls import path\r\n-from .views import ( sample_view,hello_view,VenueView,VenueCreateView,UpdateVenueView,ServiceView,ServiceDetailView,OurWorkListView,PackageView )\r\n+from .views import ( sample_view,hello_view,VenueView,\r\n+                    VenueCreateView,UpdateVenueView,ServiceView,\r\n+                    ServiceDetailView,OurWorkListView,PackageView )\r\n \r\n \r\n urlpatterns = [\r\n     path('sample/', sample_view, name='sample'),\r\n@@ -9,8 +11,9 @@\n     path('venues/<int:venue_id>/', UpdateVenueView.as_view(), name='update_venue'),\r\n     path('services/', ServiceView.as_view(), name='services'),\r\n      path('service/<int:id>/', ServiceDetailView.as_view(), name='service-detail'),\r\n     path('our-work/', OurWorkListView.as_view(), name='our-work-list'),\r\n+    path('package/',PackageView.as_view(),name='package'),\r\n ]\r\n \r\n \r\n             # style={{ width: \"400px\", aspectRatio: \"3/5\", objectFit: \"contain\" }}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1731930124436,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,26 @@\n from django.urls import path\r\n from .views import ( sample_view,hello_view,VenueView,\r\n-                    VenueCreateView,UpdateVenueView,ServiceView,\r\n-                    ServiceDetailView,OurWorkListView,PackageView )\r\n+                    VenueCreateView,UpdateVenueView,ServiceView,loginView,\r\n+                    ServiceDetailView,OurWorkListView,PackageView,PackageCreateView ,PlannerListView,AddToPlannerView)\r\n \r\n \r\n+from django.contrib.auth.views import LoginView\r\n+\r\n urlpatterns = [\r\n+    # path('login/',loginView.as_view(),name=\"login\"),\r\n     path('sample/', sample_view, name='sample'),\r\n     path('venues/', VenueView.as_view(), name='venues'),\r\n     path('venues/create/', VenueCreateView.as_view(), name='create_venue'),\r\n     path('venues/<int:venue_id>/', UpdateVenueView.as_view(), name='update_venue'),\r\n     path('services/', ServiceView.as_view(), name='services'),\r\n-     path('service/<int:id>/', ServiceDetailView.as_view(), name='service-detail'),\r\n+    path('service/<int:id>/', ServiceDetailView.as_view(), name='service-detail'),\r\n\\ No newline at end of file\n     path('our-work/', OurWorkListView.as_view(), name='our-work-list'),\r\n     path('package/',PackageView.as_view(),name='package'),\r\n+    path('package-create/', PackageCreateView.as_view(), name='package-create'),\r\n+    path('add_to_planner/', AddToPlannerView.as_view(), name='add_to_planner'),\r\n+    path('planner-list/',PlannerListView.as_view(),name='planner-list'),\r\n+    \r\n+    \r\n+    path('create/', YourModelCreateView.as_view(), name='yourmodel-create'),\r\n ]\r\n \r\n-\r\n-            # style={{ width: \"400px\", aspectRatio: \"3/5\", objectFit: \"contain\" }}\n"
+                },
+                {
+                    "date": 1731930130005,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n from django.urls import path\r\n from .views import ( sample_view,hello_view,VenueView,\r\n-                    VenueCreateView,UpdateVenueView,ServiceView,loginView,\r\n+                    VenueCreateView,UpdateVenueView,ServiceView,loginView,YourModelCreateView,\r\n                     ServiceDetailView,OurWorkListView,PackageView,PackageCreateView ,PlannerListView,AddToPlannerView)\r\n \r\n \r\n from django.contrib.auth.views import LoginView\r\n@@ -21,5 +21,6 @@\n     path('planner-list/',PlannerListView.as_view(),name='planner-list'),\r\n     \r\n     \r\n     path('create/', YourModelCreateView.as_view(), name='yourmodel-create'),\r\n-]\n\\ No newline at end of file\n+]\r\n+\r\n"
+                },
+                {
+                    "date": 1731930431950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,7 +20,6 @@\n     path('add_to_planner/', AddToPlannerView.as_view(), name='add_to_planner'),\r\n     path('planner-list/',PlannerListView.as_view(),name='planner-list'),\r\n     \r\n     \r\n-    path('create/', YourModelCreateView.as_view(), name='yourmodel-create'),\r\n ]\r\n \r\n"
+                },
+                {
+                    "date": 1731930502345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n from django.urls import path\r\n from .views import ( sample_view,hello_view,VenueView,\r\n-                    VenueCreateView,UpdateVenueView,ServiceView,loginView,YourModelCreateView,\r\n+                    VenueCreateView,UpdateVenueView,ServiceView,loginView,\r\n                     ServiceDetailView,OurWorkListView,PackageView,PackageCreateView ,PlannerListView,AddToPlannerView)\r\n \r\n \r\n from django.contrib.auth.views import LoginView\r\n"
                 }
             ],
             "date": 1731427228376,

@@ -1,7 +1,11 @@
+import React from "react";
 import styles from "../module_css/Nav.module.css";
 import { Link } from "react-router-dom";
 
 export default function Nav() {
+  // Check if the user is logged in by looking for the JWT token in localStorage
+  const authToken = localStorage.getItem("authToken");
+
   return (
     <div className={styles.container}>
       <div className={styles.navContainer}>
@@ -28,7 +32,22 @@ export default function Nav() {
               Planner
             </Link>
           </button>
-          <button className={styles.btn}>Sign In</button>
+
+          {/* Conditionally render login button or JWT token */}
+          {authToken ? (
+            <button className={styles.btn}>
+              {/* Display JWT token or a custom message */}
+              <span className={styles.links}>Logged in-</span>
+              {/* Or display JWT token directly */}
+              <span className={styles.links}>{authToken}</span>
+            </button>
+          ) : (
+            <button className={styles.btn}>
+              <Link className={styles.links} to="/login">
+                Login
+              </Link>
+            </button>
+          )}
         </div>
       </div>
     </div>

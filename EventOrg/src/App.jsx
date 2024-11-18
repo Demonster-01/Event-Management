@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import Package from "./components/Package";
 import PlannerList from "./components/PlannerList";
 import PackageCreate from "./components/PackageCreate";
+import LoginForm from "./components/Login";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/package/" element={<Package />} />
           <Route path="/planner-list/" element={<PlannerList />} />
           <Route path="/create-package/" element={<PackageCreate />} />
+          <Route path="/login/" element={<LoginForm />} />
         </Routes>
       </BrowserRouter>
     </div>

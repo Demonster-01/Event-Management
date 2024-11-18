@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1731427078821,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731928133580,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n # serializers.py\r\n from rest_framework import serializers\r\n-from .models import Venue,Service,OurWork,Package\r\n+from .models import Venue,Service,OurWork,Package,PlannerList\r\n \r\n class VenueSerializer(serializers.ModelSerializer):\r\n     class Meta:\r\n         model = Venue\r\n@@ -23,7 +23,25 @@\n         model = OurWork\r\n         fields = ['id', 'Name', 'poster', 'created_at']\r\n         \r\n class PackageSerializer(serializers.ModelSerializer):\r\n+    services = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), many=True)\r\n+\r\n     class Meta:\r\n\\ No newline at end of file\n-        model= Package\r\n-        fields = ['id', 'Name', 'Description', 'Price','poster']\n+        model = Package\r\n+        fields = ['id', 'Name', 'Description', 'Price', 'poster', 'services']\r\n+\r\n+class PlannerListSerializer(serializers.ModelSerializer):\r\n+    # venue = VenueSerializer()\r\n+    # service = ServiceSerializer()\r\n+    # package = PackageSerializer()\r\n+    # package = serializers.PrimaryKeyRelatedField(queryset=Package.objects.all())\r\n+    \r\n+        # Use PrimaryKeyRelatedField to accept only the ID of the related objects\r\n+    venue = serializers.PrimaryKeyRelatedField(queryset=Venue.objects.all(), required=False)\r\n+    service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), required=False)\r\n+    package = serializers.PrimaryKeyRelatedField(queryset=Package.objects.all(), required=False)\r\n+\r\n+\r\n+    class Meta:\r\n+        model = PlannerList \r\n+        fields = ['id', 'booked_at', 'venue', 'service', 'user', 'package','session_id']\r\n"
                 }
             ],
             "date": 1731427078821,

@@ -1,22 +1,47 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import PlannerItemComponent from "./PlannerItemComponent"; // Import your PlannerItem component
 import styles from "../module_css/PlannerList.module.css";
 
 export default function PlannerList() {
-  const [planners, setPlanners] = useState([]);
+  const [planners, setPlanners] = useState({
+    venues: [],
+    services: [],
+    packages: [],
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showVenues, setShowVenues] = useState(false);
   const [showServices, setShowServices] = useState(false);
-  const [showPackages, setShowPackages] = useState(false); // Add this state for Packages section
+  const [showPackages, setShowPackages] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  // Effect hook to determine if the user is authenticated and load data
   useEffect(() => {
+    const token = localStorage.getItem("access_token");
+
+    if (token) {
+      setIsAuthenticated(true);
+      fetchPlannerDataFromBackend(token); // Fetch from backend if user is logged in
+    } else {
+      loadPlannerDataFromLocalStorage(); // Use localStorage if user is not logged in
+    }
+  }, []);
+
+  // Fetch planner data from backend if the user is authenticated
+  const fetchPlannerDataFromBackend = (token) => {
     setLoading(true);
     axios
-      .get("http://127.0.0.1:8000/api/planner-list/")
+      .get("http://127.0.0.1:8000/api/planner-list/", {
+        headers: { Authorization: `Bearer ${token}` },
+        withCredentials: true,
+      })
       .then((response) => {
-        console.log(response.data); // Inspect response data here
-        setPlanners(response.data);
+        setPlanners({
+          venues: response.data.venues,
+          services: response.data.services,
+          packages: response.data.packages,
+        });
         setLoading(false);
       })
       .catch((error) => {
@@ -24,12 +49,54 @@ export default function PlannerList() {
         console.error(error);
         setLoading(false);
       });
-  }, []);
+  };
 
-  const venues = planners.filter((item) => item.venue);
-  const services = planners.filter((item) => item.service);
-  const pkgs = planners.filter((item) => item.package);
-  const totalItems = venues.length + services.length + pkgs.length; // Add pkgs to the total
+  // Load planner data from localStorage if the user is not authenticated
+  const loadPlannerDataFromLocalStorage = () => {
+    const storedPlanners = JSON.parse(localStorage.getItem("plannerList")) || {
+      venues: [],
+      services: [],
+      packages: [],
+    };
+    setPlanners(storedPlanners);
+  };
+
+  const addToPlanner = (item, type) => {
+    let updatedPlanners = { ...planners };
+    updatedPlanners[type].push(item);
+
+    setPlanners(updatedPlanners);
+    localStorage.setItem("plannerList", JSON.stringify(updatedPlanners));
+
+    if (isAuthenticated) {
+      const token = localStorage.getItem("access_token");
+      axios.post(
+        "http://127.0.0.1:8000/api/planner-list/",
+        { venue: item.id, service: item.id, package: item.id },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+    }
+  };
+
+  const removeFromPlanner = (itemId, type) => {
+    const updatedPlanners = { ...planners };
+    updatedPlanners[type] = updatedPlanners[type].filter(
+      (item) => item.id !== itemId
+    );
+
+    setPlanners(updatedPlanners);
+    localStorage.setItem("plannerList", JSON.stringify(updatedPlanners));
+
+    if (isAuthenticated) {
+      const token = localStorage.getItem("access_token");
+      axios.delete(`http://127.0.0.1:8000/api/planner-list/${itemId}/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    }
+  };
+
+  const { venues, services, packages } = planners;
+  const totalItems = venues.length + services.length + packages.length;
 
   return (
     <div className={styles.planner_list_container}>
@@ -52,25 +119,13 @@ export default function PlannerList() {
             {showVenues && (
               <div className={styles.section_content}>
                 {venues.map((venueItem) => (
-                  <div key={venueItem.id} className={styles.planner_card}>
-                    <img
-                      src={`http://127.0.0.1:8000${venueItem.venue.Poster}`}
-                      alt="Venue Poster"
-                      className={styles.planner_image}
-                    />
-                    <div className={styles.planner_details}>
-                      <h3>{venueItem.venue.Name}</h3>
-                      <p>Location: {venueItem.venue.Location}</p>
-                      <p>Booking Price: ${venueItem.venue.Booking_price}</p>
-                      <p>Capacity: {venueItem.venue.Capacity}</p>
-                      <p>Parking: {venueItem.venue.Parking ? "Yes" : "No"}</p>
-                      <div className={styles.btndiv}>
-                        <button className={styles.btn}>
-                          <i className="bi bi-trash3-fill"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  <PlannerItemComponent
+                    key={venueItem.id}
+                    item={venueItem}
+                    type="venues"
+                    onAdd={addToPlanner}
+                    onRemove={removeFromPlanner}
+                  />
                 ))}
               </div>
             )}
@@ -88,24 +143,13 @@ export default function PlannerList() {
             {showServices && (
               <div className={styles.section_content}>
                 {services.map((serviceItem) => (
-                  <div key={serviceItem.id} className={styles.planner_card}>
-                    <img
-                      src={`http://127.0.0.1:8000${serviceItem.service.poster}`}
-                      alt="Service Poster"
-                      className={styles.planner_image}
-                    />
-                    <div className={styles.planner_details}>
-                      <h3>{serviceItem.service.Name}</h3>
-                      <p>Type: {serviceItem.service.Type}</p>
-                      <p>Description: {serviceItem.service.Description}</p>
-                      <p>Price: ${serviceItem.service.Price}</p>
-                      <div className={styles.btndiv}>
-                        <button className={styles.btn}>
-                          <i className="bi bi-trash3-fill"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  <PlannerItemComponent
+                    key={serviceItem.id}
+                    item={serviceItem}
+                    type="services"
+                    onAdd={addToPlanner}
+                    onRemove={removeFromPlanner}
+                  />
                 ))}
               </div>
             )}
@@ -115,37 +159,22 @@ export default function PlannerList() {
           <div className={styles.section}>
             <div
               className={styles.section_header}
-              onClick={() => setShowPackages(!showPackages)} // Use showPackages state
+              onClick={() => setShowPackages(!showPackages)}
             >
               <h2>Packages</h2>
-              <span className={styles.item_count}>({pkgs.length})</span>
+              <span className={styles.item_count}>({packages.length})</span>
             </div>
-            {showPackages && ( // Check showPackages instead of showServices
+            {showPackages && (
               <div className={styles.section_content}>
-                {pkgs.map(
-                  (packageItem) =>
-                    packageItem.package && ( // Check if package is not null
-                      <div key={packageItem.id} className={styles.planner_card}>
-                        <img
-                          src={`http://127.0.0.1:8000${packageItem.package?.poster}`}
-                          alt="Package Poster"
-                          className={styles.planner_image}
-                        />
-                        <div className={styles.planner_details}>
-                          {" "}
-                          <h3>{packageItem.package.Name}</h3>
-                          <p>Type: {packageItem.package.Type}</p>
-                          <p>Description: {packageItem.package.Description}</p>
-                          <p>Price: ${packageItem.package.Price}</p>
-                          <div className={styles.btndiv}>
-                            <button className={styles.btn}>
-                              <i className="bi bi-trash3-fill"></i>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    )
-                )}
+                {packages.map((packageItem) => (
+                  <PlannerItemComponent
+                    key={packageItem.id}
+                    item={packageItem}
+                    type="packages"
+                    onAdd={addToPlanner}
+                    onRemove={removeFromPlanner}
+                  />
+                ))}
               </div>
             )}
           </div>

@@ -49,14 +49,16 @@ class Package(models.Model):
     
 
 
+from django.contrib.auth.models import User
 
-class User(models.Model):
-    username = models.CharField(max_length=50, unique=True)
-    email = models.EmailField(max_length=100, unique=True)
-    password = models.CharField(max_length=100)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    is_approved = models.BooleanField(default=False)  # or CharField, adjust the logic accordingly
+
+
     
     def __str__(self):
-        return self.username
+        return self.user.username
     
 class PlannerList(models.Model):
     booked_at = models.DateTimeField(auto_now_add=True)
