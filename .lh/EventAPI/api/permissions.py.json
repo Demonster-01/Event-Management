@@ -1,0 +1,26 @@
+{
+    "sourceFile": "EventAPI/api/permissions.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1732011064467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732011221673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,10 @@\n from rest_framework import permissions\r\n+\r\n class IsAuthorOrReadOnly(permissions.BasePermission):\r\n     def has_object_permission(self, request, view, obj):\r\n-# Read-only permissions are allowed for any request\r\n+        # Allow read-only permissions for any request\r\n         if request.method in permissions.SAFE_METHODS:\r\n             return True\r\n\\ No newline at end of file\n-# Write permissions are only allowed to the author of a post\r\n-        return obj.user == request.user\n+\r\n+        # Allow write permissions only to the author of the planner list\r\n+        return obj.user == request.user\r\n"
+                },
+                {
+                    "date": 1732011597384,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,8 @@\n class IsAuthorOrReadOnly(permissions.BasePermission):\r\n     def has_object_permission(self, request, view, obj):\r\n         # Allow read-only permissions for any request\r\n         if request.method in permissions.SAFE_METHODS:\r\n-            return True\r\n+            return False\r\n \r\n         # Allow write permissions only to the author of the planner list\r\n\\ No newline at end of file\n-        return obj.user == request.user\n+        return obj.user == request.user\r\n"
+                }
+            ],
+            "date": 1732011064467,
+            "name": "Commit-0",
+            "content": "from rest_framework import permissions\r\nclass IsAuthorOrReadOnly(permissions.BasePermission):\r\n    def has_object_permission(self, request, view, obj):\r\n# Read-only permissions are allowed for any request\r\n        if request.method in permissions.SAFE_METHODS:\r\n            return True\r\n# Write permissions are only allowed to the author of a post\r\n        return obj.user == request.user"
+        }
+    ]
+}

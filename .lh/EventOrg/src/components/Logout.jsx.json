@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1731931082804,
@@ -24,6 +24,18 @@
                 {
                     "date": 1731935839436,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,43 +0,0 @@\n-import { useContext } from \"react\";\r\n-import { useHistory } from \"react-router-dom\";\r\n-// import { UserContext } from \"./UserContext\"; // Assuming you have a context to manage user state\r\n-\r\n-const LogoutButton = () => {\r\n-  const { setUser } = useContext(UserContext); // Context to store user data\r\n-  const history = useHistory();\r\n-\r\n-  const handleLogout = async () => {\r\n-    try {\r\n-      const response = await fetch(\r\n-        \"http://127.0.0.1:8000/dj-rest-auth/logout/\",\r\n-        {\r\n-          method: \"POST\",\r\n-          headers: {\r\n-            \"Content-Type\": \"application/json\",\r\n-            Authorization: `Bearer ${localStorage.getItem(\"access_token\")}`, // Add your access token if needed\r\n-          },\r\n-        }\r\n-      );\r\n-\r\n-      if (response.ok) {\r\n-        // Clear user data from localStorage or context\r\n-        localStorage.removeItem(\"access_token\");\r\n-        setUser(null); // Reset the user context\r\n-\r\n-        // Redirect to the login page or home page\r\n-        history.push(\"/login\");\r\n-      } else {\r\n-        const responseData = await response.json();\r\n-        console.error(\"Logout failed:\", responseData);\r\n-        alert(\"Failed to log out. Please try again.\");\r\n-      }\r\n-    } catch (error) {\r\n-      console.error(\"Error:\", error);\r\n-      alert(\"An error occurred. Please try again.\");\r\n-    }\r\n-  };\r\n-\r\n-  return <button onClick={handleLogout}>Logout</button>;\r\n-};\r\n-\r\n-export default LogoutButton;\r\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1731943804602,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,26 @@\n-\n+import React from \"react\";\r\n+import { useNavigate } from \"react-router-dom\";\r\n+\r\n+const Logout = ({ setAuthToken }) => {\r\n+  const navigate = useNavigate();\r\n+\r\n+  const handleLogout = () => {\r\n+    localStorage.removeItem(\"authToken\"); // Remove token from localStorage\r\n+    setAuthToken(null); // Clear token from state\r\n+    navigate(\"/login\"); // Redirect to login page\r\n+  };\r\n+\r\n+  return (\r\n+    <div style={{ padding: \"20px\", textAlign: \"center\" }}>\r\n+      <h2>Are you sure you want to log out?</h2>\r\n+      <button\r\n+        onClick={handleLogout}\r\n+        style={{ padding: \"10px 20px\", marginTop: \"20px\" }}\r\n+      >\r\n+        Logout\r\n+      </button>\r\n+    </div>\r\n+  );\r\n+};\r\n+\r\n+export default Logout;\r\n"
+                },
+                {
+                    "date": 1731944024731,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   const navigate = useNavigate();\r\n \r\n   const handleLogout = () => {\r\n     localStorage.removeItem(\"authToken\"); // Remove token from localStorage\r\n-    setAuthToken(null); // Clear token from state\r\n+    setAuthToken(null); // Clear the auth token state\r\n     navigate(\"/login\"); // Redirect to login page\r\n   };\r\n \r\n   return (\r\n"
+                },
+                {
+                    "date": 1731944328245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,26 +1,31 @@\n+// Logout.jsx\r\n import React from \"react\";\r\n import { useNavigate } from \"react-router-dom\";\r\n \r\n const Logout = ({ setAuthToken }) => {\r\n   const navigate = useNavigate();\r\n \r\n   const handleLogout = () => {\r\n     localStorage.removeItem(\"authToken\"); // Remove token from localStorage\r\n-    setAuthToken(null); // Clear the auth token state\r\n-    navigate(\"/login\"); // Redirect to login page\r\n+    setAuthToken(null); // Clear the parent component's authToken state\r\n+    navigate(\"/login\"); // Redirect to the login page\r\n   };\r\n \r\n   return (\r\n-    <div style={{ padding: \"20px\", textAlign: \"center\" }}>\r\n-      <h2>Are you sure you want to log out?</h2>\r\n-      <button\r\n-        onClick={handleLogout}\r\n-        style={{ padding: \"10px 20px\", marginTop: \"20px\" }}\r\n-      >\r\n-        Logout\r\n-      </button>\r\n-    </div>\r\n+    <button\r\n+      onClick={handleLogout}\r\n+      style={{\r\n+        padding: \"10px 20px\",\r\n+        backgroundColor: \"red\",\r\n+        color: \"white\",\r\n+        border: \"none\",\r\n+        borderRadius: \"5px\",\r\n+        cursor: \"pointer\",\r\n+      }}\r\n+    >\r\n+      Logout\r\n+    </button>\r\n   );\r\n };\r\n \r\n export default Logout;\r\n"
                 }
             ],
             "date": 1731931082804,

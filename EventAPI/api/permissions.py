@@ -1,8 +1,10 @@
 from rest_framework import permissions
+
 class IsAuthorOrReadOnly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
-# Read-only permissions are allowed for any request
+        # Allow read-only permissions for any request
         if request.method in permissions.SAFE_METHODS:
-            return True
-# Write permissions are only allowed to the author of a post
-        return obj.author == request.user
+            return False
+
+        # Allow write permissions only to the author of the planner list
+        return obj.user == request.user

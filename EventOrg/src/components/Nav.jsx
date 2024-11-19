@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../module_css/Nav.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Nav() {
-  // Check if the user is logged in by looking for the JWT token in localStorage
-  const authToken = localStorage.getItem("authToken");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className={styles.container}>
@@ -28,22 +28,22 @@ export default function Nav() {
 
         <div className={styles.btngroup}>
           <button className={styles.btn}>
-            <Link className={styles.links} to="/planner-list">
+            <Link className={styles.links} to="#">
               Planner
             </Link>
           </button>
 
-          {/* Conditionally render login button or JWT token */}
-          {authToken ? (
-            <button className={styles.btn}>
-              {/* Display JWT token or a custom message */}
-              <span className={styles.links}>Logged in-</span>
-              {/* Or display JWT token directly */}
-              <span className={styles.links}>{authToken}</span>
+          {/* Conditionally render login or logout based on authentication */}
+          {isAuthenticated ? (
+            <button className={styles.btn} onClick={handleLogout}>
+              <span className={styles.links}>Logged in</span>
+              <span className={styles.links}>
+                <button className={styles.logoutBtn}>Logout</button>
+              </span>
             </button>
           ) : (
             <button className={styles.btn}>
-              <Link className={styles.links} to="/login">
+              <Link className={styles.links} to="/">
                 Login
               </Link>
             </button>

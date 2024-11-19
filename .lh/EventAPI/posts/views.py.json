@@ -1,0 +1,46 @@
+{
+    "sourceFile": "EventAPI/posts/views.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1731938824962,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731938831269,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,6 +4,6 @@\n from rest_framework import generics\r\n from .models import Post\r\n from .serializers import PostSerializer\r\n class PostList(generics.ListCreateAPIView):\r\n-queryset = Post.objects.all()\r\n-serializer_class = PostSerializer\n\\ No newline at end of file\n+    queryset = Post.objects.all()\r\n+    serializer_class = PostSerializer\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1731938841413,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,5 +5,9 @@\n from .models import Post\r\n from .serializers import PostSerializer\r\n class PostList(generics.ListCreateAPIView):\r\n     queryset = Post.objects.all()\r\n+    serializer_class = PostSerializer\r\n+    \r\n+class PostDetail(generics.RetrieveUpdateDestroyAPIView):\r\n+    queryset = Post.objects.all()\r\n     serializer_class = PostSerializer\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1731939011712,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,14 @@\n # Create your views here.\r\n from rest_framework import generics\r\n from .models import Post\r\n from .serializers import PostSerializer\r\n+from rest_framework import generics, permissions\r\n+\r\n class PostList(generics.ListCreateAPIView):\r\n+    permission_classes = (permissions.IsAuthenticated,) # new\r\n     queryset = Post.objects.all()\r\n     serializer_class = PostSerializer\r\n-    \r\n+\r\n class PostDetail(generics.RetrieveUpdateDestroyAPIView):\r\n     queryset = Post.objects.all()\r\n     serializer_class = PostSerializer\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1731939017734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,6 +11,7 @@\n     queryset = Post.objects.all()\r\n     serializer_class = PostSerializer\r\n \r\n class PostDetail(generics.RetrieveUpdateDestroyAPIView):\r\n+    permission_classes = (permissions.IsAuthenticated,) # new\r\n     queryset = Post.objects.all()\r\n     serializer_class = PostSerializer\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1731939309866,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,12 +6,11 @@\n from .serializers import PostSerializer\r\n from rest_framework import generics, permissions\r\n \r\n class PostList(generics.ListCreateAPIView):\r\n-    permission_classes = (permissions.IsAuthenticated,) # new\r\n     queryset = Post.objects.all()\r\n     serializer_class = PostSerializer\r\n-\r\n+    \r\n+    \r\n class PostDetail(generics.RetrieveUpdateDestroyAPIView):\r\n-    permission_classes = (permissions.IsAuthenticated,) # new\r\n\\ No newline at end of file\n     queryset = Post.objects.all()\r\n-    serializer_class = PostSerializer\n+    serializer_class = PostSerializer\r\n"
+                },
+                {
+                    "date": 1731939484669,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n from rest_framework import generics\r\n from .models import Post\r\n from .serializers import PostSerializer\r\n from rest_framework import generics, permissions\r\n+from .permissions import IsAuthorOrReadOnly\r\n \r\n class PostList(generics.ListCreateAPIView):\r\n     queryset = Post.objects.all()\r\n     serializer_class = PostSerializer\r\n"
+                },
+                {
+                    "date": 1731939496873,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,6 +12,7 @@\n     serializer_class = PostSerializer\r\n     \r\n     \r\n class PostDetail(generics.RetrieveUpdateDestroyAPIView):\r\n+    permission_classes = (IsAuthorOrReadOnly,)\r\n     queryset = Post.objects.all()\r\n     serializer_class = PostSerializer\r\n"
+                }
+            ],
+            "date": 1731938824962,
+            "name": "Commit-0",
+            "content": "from django.shortcuts import render\r\n\r\n# Create your views here.\r\nfrom rest_framework import generics\r\nfrom .models import Post\r\nfrom .serializers import PostSerializer\r\nclass PostList(generics.ListCreateAPIView):\r\nqueryset = Post.objects.all()\r\nserializer_class = PostSerializer"
+        }
+    ]
+}

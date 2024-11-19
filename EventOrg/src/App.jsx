@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import React, { useState } from "react";
 
 import Nav from "./components/Nav";
 import Slider from "./components/Slider";
@@ -14,9 +15,7 @@ import Service_gallery from "./components/Service_gallery";
 import OurWork from "./components/OurWork";
 import Footer from "./components/Footer";
 import Package from "./components/Package";
-import PlannerList from "./components/PlannerList";
 import PackageCreate from "./components/PackageCreate";
-import LoginForm from "./components/Login";
 
 function App() {
   return (
@@ -43,9 +42,7 @@ function App() {
           <Route path="/service-detail/:id" element={<ServiceDetails />} />
           <Route path="/service-gallery/" element={<Service_gallery />} />
           <Route path="/package/" element={<Package />} />
-          <Route path="/planner-list/" element={<PlannerList />} />
           <Route path="/create-package/" element={<PackageCreate />} />
-          <Route path="/login/" element={<LoginForm />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1731930823713,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731938717624,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,10 @@\n urlpatterns = [\r\n     path(\"admin/\", admin.site.urls),\r\n     path('api/', include('api.urls')),\r\n     \r\n+    \r\n+    path('api/v1/', include('posts.urls')), \r\n \r\n     # REST framework authentication\r\n     path('api-auth/', include('rest_framework.urls')),\r\n \r\n"
+                },
+                {
+                    "date": 1731938907535,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n urlpatterns = [\r\n     path(\"admin/\", admin.site.urls),\r\n     path('api/', include('api.urls')),\r\n     \r\n-    \r\n+    # postapp\r\n     path('api/v1/', include('posts.urls')), \r\n \r\n     # REST framework authentication\r\n     path('api-auth/', include('rest_framework.urls')),\r\n"
+                },
+                {
+                    "date": 1731942964214,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,14 @@\n from django.urls import path,include\r\n from django.conf import settings\r\n from django.conf.urls.static import static\r\n from rest_framework_simplejwt import views as jwt_views\r\n+\r\n+from rest_framework_simplejwt.views import (\r\n+    TokenObtainPairView,\r\n+    TokenRefreshView,\r\n+)\r\n+\r\n urlpatterns = [\r\n     path(\"admin/\", admin.site.urls),\r\n     path('api/', include('api.urls')),\r\n     \r\n@@ -32,10 +38,12 @@\n     # Authentication and registration\r\n     path(\"dj-rest-auth/\", include(\"dj_rest_auth.urls\")),\r\n     path(\"dj-rest-auth/registration/\", include(\"dj_rest_auth.registration.urls\")),  # Registration\r\n     \r\n-    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),\r\n-    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),\r\n+\r\n+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),\r\n+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),\r\n+    \r\n ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\r\n \r\n \r\n \r\n"
                 }
             ],
             "date": 1731930823713,

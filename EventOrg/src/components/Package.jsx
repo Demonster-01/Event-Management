@@ -9,17 +9,6 @@ export default function Package() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch all services first
-    axios
-      .get("http://127.0.0.1:8000/api/services/")
-      .then((response) => {
-        setServices(response.data);
-      })
-      .catch((error) => {
-        setError("Error fetching services");
-        console.error(error);
-      });
-
     // Then fetch packages
     axios
       .get("http://127.0.0.1:8000/api/package/")

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 6,
+            "activePatchIndex": 24,
             "patches": [
                 {
                     "date": 1731926893715,
@@ -32,6 +32,78 @@
                 {
                     "date": 1731930778868,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,8 @@\n     'DEFAULT_PERMISSION_CLASSES': [\r\n     'rest_framework.permissions.AllowAny',\r\n     ],\r\n     'DEFAULT_AUTHENTICATION_CLASSES': [\r\n-        'rest_framework.authentication.SessionAuthentication',\r\n         'rest_framework_simplejwt.authentication.JWTAuthentication', \r\n     ],\r\n     }\r\n # Configure dj_rest_auth to use JWT\r\n@@ -75,11 +74,9 @@\n # DJ Rest Auth settings\r\n REST_AUTH_SERIALIZERS = {\r\n     'LOGIN_SERIALIZER': 'dj_rest_auth.serializers.LoginSerializer',\r\n }\r\n-AUTHENTICATION_CLASSES = [\r\n-    'rest_framework.authentication.JWTAuthentication',  # Or TokenAuthentication if using tokens\r\n-]\r\n+\r\n SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Default session engine\r\n SESSION_COOKIE_AGE = 3600 * 24 * 30  # 30 days\r\n SESSION_EXPIRE_AT_BROWSER_CLOSE = False\r\n \r\n"
+                },
+                {
+                    "date": 1731937377663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -87,19 +87,20 @@\n \r\n \r\n \r\n MIDDLEWARE = [\r\n-    \"django.middleware.security.SecurityMiddleware\",\r\n-    \"django.contrib.sessions.middleware.SessionMiddleware\",\r\n-    'corsheaders.middleware.CorsMiddleware',\r\n-    \"django.middleware.common.CommonMiddleware\",\r\n-    \"django.middleware.csrf.CsrfViewMiddleware\",\r\n-    \"django.contrib.auth.middleware.AuthenticationMiddleware\",\r\n-    \"django.contrib.messages.middleware.MessageMiddleware\",\r\n-    \"django.middleware.clickjacking.XFrameOptionsMiddleware\",\r\n-    \"allauth.account.middleware.AccountMiddleware\",  # Required for allauth\r\n+    \"django.middleware.security.SecurityMiddleware\",  # Security-related middleware\r\n+    \"django.contrib.sessions.middleware.SessionMiddleware\",  # Manages sessions\r\n+    'corsheaders.middleware.CorsMiddleware',  # Should be before authentication and CSRF middleware\r\n+    \"django.middleware.common.CommonMiddleware\",  # Common middleware like handling 404s\r\n+    \"django.middleware.csrf.CsrfViewMiddleware\",  # CSRF protection middleware\r\n+    \"django.contrib.auth.middleware.AuthenticationMiddleware\",  # User authentication\r\n+    \"django.contrib.messages.middleware.MessageMiddleware\",  # Messaging framework (user feedback)\r\n+    \"django.middleware.clickjacking.XFrameOptionsMiddleware\",  # Prevents clickjacking\r\n+    \"allauth.account.middleware.AccountMiddleware\",  # Middleware for allauth\r\n ]\r\n \r\n+\r\n CORS_ALLOWED_ORIGINS = [\r\n     \"http://localhost:5173\",  # React app\r\n     \"http://localhost:3000\",  # Another common React app port\r\n ]\r\n"
+                },
+                {
+                    "date": 1731937928021,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n     'DEFAULT_PERMISSION_CLASSES': [\r\n     'rest_framework.permissions.AllowAny',\r\n     ],\r\n     'DEFAULT_AUTHENTICATION_CLASSES': [\r\n-        'rest_framework_simplejwt.authentication.JWTAuthentication', \r\n+        'api.Authentication.CustomJWTAuthentication', \r\n     ],\r\n     }\r\n # Configure dj_rest_auth to use JWT\r\n REST_USE_JWT = True  # Enable JWT\r\n"
+                },
+                {
+                    "date": 1731938071452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,10 @@\n     'DEFAULT_PERMISSION_CLASSES': [\r\n     'rest_framework.permissions.AllowAny',\r\n     ],\r\n     'DEFAULT_AUTHENTICATION_CLASSES': [\r\n-        'api.Authentication.CustomJWTAuthentication', \r\n+        'EventAPI.api.Authentication.CustomJWTAuthentication',\r\n+\r\n     ],\r\n     }\r\n # Configure dj_rest_auth to use JWT\r\n REST_USE_JWT = True  # Enable JWT\r\n"
+                },
+                {
+                    "date": 1731938103365,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,10 +56,9 @@\n     'DEFAULT_PERMISSION_CLASSES': [\r\n     'rest_framework.permissions.AllowAny',\r\n     ],\r\n     'DEFAULT_AUTHENTICATION_CLASSES': [\r\n-        'EventAPI.api.Authentication.CustomJWTAuthentication',\r\n-\r\n+        'rest_framework_simplejwt.authentication.JWTAuthentication', \r\n     ],\r\n     }\r\n # Configure dj_rest_auth to use JWT\r\n REST_USE_JWT = True  # Enable JWT\r\n"
+                },
+                {
+                    "date": 1731938560244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,8 +49,9 @@\n     \"allauth.account\",  # Account management\r\n     \"allauth.socialaccount\",  # (Optional) Social authentication\r\n     \r\n     \"api.apps.ApiConfig\",\r\n+    'posts.apps.PostsConfig', \r\n ]\r\n \r\n REST_FRAMEWORK = {\r\n     'DEFAULT_PERMISSION_CLASSES': [\r\n"
+                },
+                {
+                    "date": 1731939284273,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,9 +54,9 @@\n ]\r\n \r\n REST_FRAMEWORK = {\r\n     'DEFAULT_PERMISSION_CLASSES': [\r\n-    'rest_framework.permissions.AllowAny',\r\n+        'rest_framework.permissions.AllowAny',\r\n     ],\r\n     'DEFAULT_AUTHENTICATION_CLASSES': [\r\n         'rest_framework_simplejwt.authentication.JWTAuthentication', \r\n     ],\r\n"
+                },
+                {
+                    "date": 1731939332159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,9 +54,9 @@\n ]\r\n \r\n REST_FRAMEWORK = {\r\n     'DEFAULT_PERMISSION_CLASSES': [\r\n-        'rest_framework.permissions.AllowAny',\r\n+        'rest_framework.permissions.IsAuthenticated',\r\n     ],\r\n     'DEFAULT_AUTHENTICATION_CLASSES': [\r\n         'rest_framework_simplejwt.authentication.JWTAuthentication', \r\n     ],\r\n"
+                },
+                {
+                    "date": 1731942428190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,11 +53,11 @@\n     'posts.apps.PostsConfig', \r\n ]\r\n \r\n REST_FRAMEWORK = {\r\n-    'DEFAULT_PERMISSION_CLASSES': [\r\n-        'rest_framework.permissions.IsAuthenticated',\r\n-    ],\r\n+    # 'DEFAULT_PERMISSION_CLASSES': [\r\n+    #     'rest_framework.permissions.IsAuthenticated',\r\n+    # ],\r\n     'DEFAULT_AUTHENTICATION_CLASSES': [\r\n         'rest_framework_simplejwt.authentication.JWTAuthentication', \r\n     ],\r\n     }\r\n"
+                },
+                {
+                    "date": 1731942454780,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,16 +52,17 @@\n     \"api.apps.ApiConfig\",\r\n     'posts.apps.PostsConfig', \r\n ]\r\n \r\n+\r\n REST_FRAMEWORK = {\r\n-    # 'DEFAULT_PERMISSION_CLASSES': [\r\n-    #     'rest_framework.permissions.IsAuthenticated',\r\n-    # ],\r\n     'DEFAULT_AUTHENTICATION_CLASSES': [\r\n-        'rest_framework_simplejwt.authentication.JWTAuthentication', \r\n-    ],\r\n-    }\r\n+        'rest_framework.authentication.BasicAuthentication',\r\n+        'rest_framework.authentication.SessionAuthentication',\r\n+    ]\r\n+}\r\n+\r\n+\r\n # Configure dj_rest_auth to use JWT\r\n REST_USE_JWT = True  # Enable JWT\r\n from datetime import timedelta\r\n # JWT settings\r\n"
+                },
+                {
+                    "date": 1731942481864,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,43 +53,10 @@\n     'posts.apps.PostsConfig', \r\n ]\r\n \r\n \r\n-REST_FRAMEWORK = {\r\n-    'DEFAULT_AUTHENTICATION_CLASSES': [\r\n-        'rest_framework.authentication.BasicAuthentication',\r\n-        'rest_framework.authentication.SessionAuthentication',\r\n-    ]\r\n-}\r\n \r\n \r\n-# Configure dj_rest_auth to use JWT\r\n-REST_USE_JWT = True  # Enable JWT\r\n-from datetime import timedelta\r\n-# JWT settings\r\n-SIMPLE_JWT = {\r\n-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=500),  # Adjust the access token lifetime\r\n-    'REFRESH_TOKEN_LIFETIME': timedelta(days=11),\r\n-    'ROTATE_REFRESH_TOKENS': False,\r\n-    'BLACKLIST_AFTER_ROTATION': True,\r\n-    'UPDATE_LAST_LOGIN': False,\r\n-}\r\n-# DJ Rest Auth settings\r\n-REST_AUTH_SERIALIZERS = {\r\n-    'LOGIN_SERIALIZER': 'dj_rest_auth.serializers.LoginSerializer',\r\n-}\r\n-\r\n-SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Default session engine\r\n-SESSION_COOKIE_AGE = 3600 * 24 * 30  # 30 days\r\n-SESSION_EXPIRE_AT_BROWSER_CLOSE = False\r\n-\r\n-\r\n-\r\n-\r\n-\r\n-\r\n-\r\n-\r\n MIDDLEWARE = [\r\n     \"django.middleware.security.SecurityMiddleware\",  # Security-related middleware\r\n     \"django.contrib.sessions.middleware.SessionMiddleware\",  # Manages sessions\r\n     'corsheaders.middleware.CorsMiddleware',  # Should be before authentication and CSRF middleware\r\n@@ -186,5 +153,40 @@\n MEDIA_URL = '/media/'\r\n MEDIA_ROOT = os.path.join(BASE_DIR, 'media') \r\n \r\n EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new\r\n-SITE_ID = 1 # new\n\\ No newline at end of file\n+SITE_ID = 1 # new\r\n+\r\n+\r\n+\r\n+\r\n+REST_FRAMEWORK = {\r\n+    'DEFAULT_AUTHENTICATION_CLASSES': [\r\n+        'rest_framework.authentication.BasicAuthentication',\r\n+        'rest_framework.authentication.SessionAuthentication',\r\n+    ]\r\n+}\r\n+\r\n+\r\n+# Configure dj_rest_auth to use JWT\r\n+REST_USE_JWT = True  # Enable JWT\r\n+from datetime import timedelta\r\n+# JWT settings\r\n+SIMPLE_JWT = {\r\n+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=500),  # Adjust the access token lifetime\r\n+    'REFRESH_TOKEN_LIFETIME': timedelta(days=11),\r\n+    'ROTATE_REFRESH_TOKENS': False,\r\n+    'BLACKLIST_AFTER_ROTATION': True,\r\n+    'UPDATE_LAST_LOGIN': False,\r\n+}\r\n+# DJ Rest Auth settings\r\n+REST_AUTH_SERIALIZERS = {\r\n+    'LOGIN_SERIALIZER': 'dj_rest_auth.serializers.LoginSerializer',\r\n+}\r\n+\r\n+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Default session engine\r\n+SESSION_COOKIE_AGE = 3600 * 24 * 30  # 30 days\r\n+SESSION_EXPIRE_AT_BROWSER_CLOSE = False\r\n+\r\n+\r\n+\r\n+\r\n"
+                },
+                {
+                    "date": 1731942843803,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -160,10 +160,10 @@\n \r\n \r\n REST_FRAMEWORK = {\r\n     'DEFAULT_AUTHENTICATION_CLASSES': [\r\n-        'rest_framework.authentication.BasicAuthentication',\r\n         'rest_framework.authentication.SessionAuthentication',\r\n+        'rest_framework_simplejwt.authentication.JWTAuthentication',\r\n     ]\r\n }\r\n \r\n \r\n"
+                },
+                {
+                    "date": 1731942866725,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -160,10 +160,10 @@\n \r\n \r\n REST_FRAMEWORK = {\r\n     'DEFAULT_AUTHENTICATION_CLASSES': [\r\n+        'rest_framework_simplejwt.authentication.JWTAuthentication',\r\n         'rest_framework.authentication.SessionAuthentication',\r\n-        'rest_framework_simplejwt.authentication.JWTAuthentication',\r\n     ]\r\n }\r\n \r\n \r\n"
+                },
+                {
+                    "date": 1731945422650,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,8 +50,9 @@\n     \"allauth.socialaccount\",  # (Optional) Social authentication\r\n     \r\n     \"api.apps.ApiConfig\",\r\n     'posts.apps.PostsConfig', \r\n+    'corsheaders',\r\n ]\r\n \r\n \r\n \r\n"
+                },
+                {
+                    "date": 1731945548047,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -74,10 +74,10 @@\n     \"http://localhost:5173\",  # React app\r\n     \"http://localhost:3000\",  # Another common React app port\r\n ]\r\n \r\n-CORS_ALLOW_ALL_ORIGINS = True\r\n \r\n+\r\n ROOT_URLCONF = \"EventAPI.urls\"\r\n \r\n TEMPLATES = [\r\n     {\r\n"
+                },
+                {
+                    "date": 1731945590992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,14 +70,15 @@\n ]\r\n \r\n \r\n CORS_ALLOWED_ORIGINS = [\r\n-    \"http://localhost:5173\",  # React app\r\n+    \"http://localhost:5173\",  # React app running locally\r\n     \"http://localhost:3000\",  # Another common React app port\r\n ]\r\n \r\n \r\n \r\n+\r\n ROOT_URLCONF = \"EventAPI.urls\"\r\n \r\n TEMPLATES = [\r\n     {\r\n"
+                },
+                {
+                    "date": 1731945598197,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,8 +73,9 @@\n CORS_ALLOWED_ORIGINS = [\r\n     \"http://localhost:5173\",  # React app running locally\r\n     \"http://localhost:3000\",  # Another common React app port\r\n ]\r\n+CORS_ALLOW_CREDENTIALS = True\r\n \r\n \r\n \r\n \r\n"
+                },
+                {
+                    "date": 1731945604416,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -74,8 +74,13 @@\n     \"http://localhost:5173\",  # React app running locally\r\n     \"http://localhost:3000\",  # Another common React app port\r\n ]\r\n CORS_ALLOW_CREDENTIALS = True\r\n+CORS_ALLOW_HEADERS = [\r\n+    \"content-type\",\r\n+    \"Authorization\",\r\n+    \"accept\",\r\n+]\r\n \r\n \r\n \r\n \r\n"
+                },
+                {
+                    "date": 1731945676464,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -170,9 +170,12 @@\n REST_FRAMEWORK = {\r\n     'DEFAULT_AUTHENTICATION_CLASSES': [\r\n         'rest_framework_simplejwt.authentication.JWTAuthentication',\r\n         'rest_framework.authentication.SessionAuthentication',\r\n-    ]\r\n+    ],\r\n+    'DEFAULT_PERMISSION_CLASSES': [\r\n+        'rest_framework.permissions.IsAuthenticated',\r\n+    ],\r\n }\r\n \r\n \r\n # Configure dj_rest_auth to use JWT\r\n"
                 }
             ],
             "date": 1731926893715,

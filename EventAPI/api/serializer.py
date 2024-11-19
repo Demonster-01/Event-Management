@@ -30,18 +30,17 @@ class PackageSerializer(serializers.ModelSerializer):
         model = Package
         fields = ['id', 'Name', 'Description', 'Price', 'poster', 'services']
 
-class PlannerListSerializer(serializers.ModelSerializer):
-    # venue = VenueSerializer()
-    # service = ServiceSerializer()
-    # package = PackageSerializer()
-    # package = serializers.PrimaryKeyRelatedField(queryset=Package.objects.all())
-    
-        # Use PrimaryKeyRelatedField to accept only the ID of the related objects
-    venue = serializers.PrimaryKeyRelatedField(queryset=Venue.objects.all(), required=False)
-    service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), required=False)
-    package = serializers.PrimaryKeyRelatedField(queryset=Package.objects.all(), required=False)
 
+
+class PlannerListSerializer(serializers.ModelSerializer):
+    venue = serializers.PrimaryKeyRelatedField(
+        queryset=Venue.objects.all(), required=False, allow_null=True
+    )
+    service = serializers.PrimaryKeyRelatedField(
+        queryset=Service.objects.all(), required=False, allow_null=True
+    )
+    package = PackageSerializer()
 
     class Meta:
-        model = PlannerList 
-        fields = ['id', 'booked_at', 'venue', 'service', 'user', 'package','session_id']
+        model = PlannerList
+        fields = ["id", "booked_at", "venue", "service", "user", "package", "session_id"]

@@ -19,6 +19,12 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt import views as jwt_views
+
+# from rest_framework_simplejwt.views import (
+#     TokenObtainPairView,
+#     TokenRefreshView,
+# )
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/', include('api.urls')),
@@ -28,11 +34,13 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
 
     # Authentication and registration
-    path("dj-rest-auth/", include("dj_rest_auth.urls")),
-    path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),  # Registration
+    # path("dj-rest-auth/", include("dj_rest_auth.urls")),
+    # path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),  # Registration
     
-    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+
+    # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

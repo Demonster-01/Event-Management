@@ -1,0 +1,18 @@
+{
+    "sourceFile": "EventAPI/posts/urls.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1731938754001,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1731938754001,
+            "name": "Commit-0",
+            "content": "from django.urls import path\r\nfrom .views import PostList, PostDetail\r\nurlpatterns = [\r\npath('<int:pk>/', PostDetail.as_view()),\r\npath('', PostList.as_view()),\r\n]"
+        }
+    ]
+}

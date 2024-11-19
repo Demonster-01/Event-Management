@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1731427078821,
@@ -12,6 +12,22 @@
                 {
                     "date": 1731928133580,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n # serializers.py\r\n from rest_framework import serializers\r\n-from .models import Venue,Service,OurWork,Package\r\n+from .models import Venue,Service,OurWork,Package,PlannerList\r\n \r\n class VenueSerializer(serializers.ModelSerializer):\r\n     class Meta:\r\n         model = Venue\r\n@@ -23,7 +23,25 @@\n         model = OurWork\r\n         fields = ['id', 'Name', 'poster', 'created_at']\r\n         \r\n class PackageSerializer(serializers.ModelSerializer):\r\n+    services = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), many=True)\r\n+\r\n     class Meta:\r\n\\ No newline at end of file\n-        model= Package\r\n-        fields = ['id', 'Name', 'Description', 'Price','poster']\n+        model = Package\r\n+        fields = ['id', 'Name', 'Description', 'Price', 'poster', 'services']\r\n+\r\n+class PlannerListSerializer(serializers.ModelSerializer):\r\n+    # venue = VenueSerializer()\r\n+    # service = ServiceSerializer()\r\n+    # package = PackageSerializer()\r\n+    # package = serializers.PrimaryKeyRelatedField(queryset=Package.objects.all())\r\n+    \r\n+        # Use PrimaryKeyRelatedField to accept only the ID of the related objects\r\n+    venue = serializers.PrimaryKeyRelatedField(queryset=Venue.objects.all(), required=False)\r\n+    service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), required=False)\r\n+    package = serializers.PrimaryKeyRelatedField(queryset=Package.objects.all(), required=False)\r\n+\r\n+\r\n+    class Meta:\r\n+        model = PlannerList \r\n+        fields = ['id', 'booked_at', 'venue', 'service', 'user', 'package','session_id']\r\n"
+                },
+                {
+                    "date": 1731944635044,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,17 +31,12 @@\n         fields = ['id', 'Name', 'Description', 'Price', 'poster', 'services']\r\n \r\n class PlannerListSerializer(serializers.ModelSerializer):\r\n     # venue = VenueSerializer()\r\n-    # service = ServiceSerializer()\r\n-    # package = PackageSerializer()\r\n-    # package = serializers.PrimaryKeyRelatedField(queryset=Package.objects.all())\r\n-    \r\n-        # Use PrimaryKeyRelatedField to accept only the ID of the related objects\r\n     venue = serializers.PrimaryKeyRelatedField(queryset=Venue.objects.all(), required=False)\r\n     service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), required=False)\r\n     package = serializers.PrimaryKeyRelatedField(queryset=Package.objects.all(), required=False)\r\n \r\n \r\n     class Meta:\r\n         model = PlannerList \r\n-        fields = ['id', 'booked_at', 'venue', 'service', 'user', 'package','session_id']\n\\ No newline at end of file\n+        fields = ['id', 'booked_at', 'venue', 'service', 'user', 'package','session_id']\r\n"
+                },
+                {
+                    "date": 1731945134545,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,14 +29,20 @@\n     class Meta:\r\n         model = Package\r\n         fields = ['id', 'Name', 'Description', 'Price', 'poster', 'services']\r\n \r\n+\r\n+\r\n class PlannerListSerializer(serializers.ModelSerializer):\r\n-    # venue = VenueSerializer()\r\n-    venue = serializers.PrimaryKeyRelatedField(queryset=Venue.objects.all(), required=False)\r\n-    service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), required=False)\r\n-    package = serializers.PrimaryKeyRelatedField(queryset=Package.objects.all(), required=False)\r\n+    venue = serializers.PrimaryKeyRelatedField(\r\n+        queryset=Venue.objects.all(), required=False, allow_null=True\r\n+    )\r\n+    service = serializers.PrimaryKeyRelatedField(\r\n+        queryset=Service.objects.all(), required=False, allow_null=True\r\n+    )\r\n+    package = serializers.PrimaryKeyRelatedField(\r\n+        queryset=Package.objects.all(), required=False, allow_null=True\r\n+    )\r\n \r\n-\r\n     class Meta:\r\n-        model = PlannerList \r\n-        fields = ['id', 'booked_at', 'venue', 'service', 'user', 'package','session_id']\r\n+        model = PlannerList\r\n+        fields = [\"id\", \"booked_at\", \"venue\", \"service\", \"user\", \"package\", \"session_id\"]\r\n"
+                },
+                {
+                    "date": 1732009727809,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,11 +38,12 @@\n     )\r\n     service = serializers.PrimaryKeyRelatedField(\r\n         queryset=Service.objects.all(), required=False, allow_null=True\r\n     )\r\n-    package = serializers.PrimaryKeyRelatedField(\r\n-        queryset=Package.objects.all(), required=False, allow_null=True\r\n-    )\r\n+    # package = serializers.PrimaryKeyRelatedField(\r\n+    #     queryset=Package.objects.all(), required=False, allow_null=True\r\n+    # )\r\n+    package = PackageSerializer()\r\n \r\n     class Meta:\r\n         model = PlannerList\r\n         fields = [\"id\", \"booked_at\", \"venue\", \"service\", \"user\", \"package\", \"session_id\"]\r\n"
+                },
+                {
+                    "date": 1732009742723,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,11 +38,8 @@\n     )\r\n     service = serializers.PrimaryKeyRelatedField(\r\n         queryset=Service.objects.all(), required=False, allow_null=True\r\n     )\r\n-    # package = serializers.PrimaryKeyRelatedField(\r\n-    #     queryset=Package.objects.all(), required=False, allow_null=True\r\n-    # )\r\n     package = PackageSerializer()\r\n \r\n     class Meta:\r\n         model = PlannerList\r\n"
                 }
             ],
             "date": 1731427078821,

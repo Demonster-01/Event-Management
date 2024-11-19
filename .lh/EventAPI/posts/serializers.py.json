@@ -1,0 +1,22 @@
+{
+    "sourceFile": "EventAPI/posts/serializers.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1731938779421,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731938799710,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n from rest_framework import serializers\r\n from .models import Post\r\n class PostSerializer(serializers.ModelSerializer):\r\n-class Meta:\r\n-fields = ('id', 'author', 'title', 'body', 'created_at',)\r\n-model = Post\n\\ No newline at end of file\n+    class Meta:\r\n+        fields = ('id', 'author', 'title', 'body', 'created_at',)\r\n+        model = Post\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1731938779421,
+            "name": "Commit-0",
+            "content": "from rest_framework import serializers\r\nfrom .models import Post\r\nclass PostSerializer(serializers.ModelSerializer):\r\nclass Meta:\r\nfields = ('id', 'author', 'title', 'body', 'created_at',)\r\nmodel = Post"
+        }
+    ]
+}

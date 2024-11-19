@@ -1,0 +1,18 @@
+{
+    "sourceFile": "EventAPI/posts/models.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1731938601627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1731938601627,
+            "name": "Commit-0",
+            "content": "from django.db import models\r\nfrom django.contrib.auth.models import User\r\nclass Post(models.Model):\r\n    author = models.ForeignKey(User, on_delete=models.CASCADE)\r\n    title = models.CharField(max_length=50)\r\n    body = models.TextField()\r\n    created_at = models.DateTimeField(auto_now_add=True)\r\n    updated_at = models.DateTimeField(auto_now=True)\r\n    \r\n    def __str__(self):\r\n        return self.title"
+        }
+    ]
+}

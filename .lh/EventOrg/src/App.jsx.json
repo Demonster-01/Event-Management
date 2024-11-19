@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 10,
+            "activePatchIndex": 16,
             "patches": [
                 {
                     "date": 1731420256557,
@@ -48,6 +48,30 @@
                 {
                     "date": 1731935872561,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,8 @@\n import Package from \"./components/Package\";\r\n import PlannerList from \"./components/PlannerList\";\r\n import PackageCreate from \"./components/PackageCreate\";\r\n import LoginForm from \"./components/Login\";\r\n-import LogoutButton from \"./components/Logout\";\r\n \r\n function App() {\r\n   return (\r\n     <div className=\"App\">\r\n"
+                },
+                {
+                    "date": 1731943885561,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,9 @@\n import Package from \"./components/Package\";\r\n import PlannerList from \"./components/PlannerList\";\r\n import PackageCreate from \"./components/PackageCreate\";\r\n import LoginForm from \"./components/Login\";\r\n+import Logout from \"./components/Logout\";\r\n \r\n function App() {\r\n   return (\r\n     <div className=\"App\">\r\n@@ -45,8 +46,9 @@\n           <Route path=\"/package/\" element={<Package />} />\r\n           <Route path=\"/planner-list/\" element={<PlannerList />} />\r\n           <Route path=\"/create-package/\" element={<PackageCreate />} />\r\n           <Route path=\"/login/\" element={<LoginForm />} />\r\n+          <Route path=\"/logout\" element={<Logout />} />\r\n         </Routes>\r\n       </BrowserRouter>\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1731944055677,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,10 +45,16 @@\n           <Route path=\"/service-gallery/\" element={<Service_gallery />} />\r\n           <Route path=\"/package/\" element={<Package />} />\r\n           <Route path=\"/planner-list/\" element={<PlannerList />} />\r\n           <Route path=\"/create-package/\" element={<PackageCreate />} />\r\n-          <Route path=\"/login/\" element={<LoginForm />} />\r\n-          <Route path=\"/logout\" element={<Logout />} />\r\n+          <Route\r\n+            path=\"/login\"\r\n+            element={<Login setAuthToken={setAuthToken} />}\r\n+          />\r\n+          <Route\r\n+            path=\"/logout\"\r\n+            element={<Logout setAuthToken={setAuthToken} />}\r\n+          />\r\n         </Routes>\r\n       </BrowserRouter>\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1731944077678,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,13 +45,11 @@\n           <Route path=\"/service-gallery/\" element={<Service_gallery />} />\r\n           <Route path=\"/package/\" element={<Package />} />\r\n           <Route path=\"/planner-list/\" element={<PlannerList />} />\r\n           <Route path=\"/create-package/\" element={<PackageCreate />} />\r\n+          <Route path=\"/login/\" element={<LoginForm />} />\r\n+          {/* <Route path=\"/login\" element={<Login setAuthToken={setAuthToken} />} /> */}\r\n           <Route\r\n-            path=\"/login\"\r\n-            element={<Login setAuthToken={setAuthToken} />}\r\n-          />\r\n-          <Route\r\n             path=\"/logout\"\r\n             element={<Logout setAuthToken={setAuthToken} />}\r\n           />\r\n         </Routes>\r\n"
+                },
+                {
+                    "date": 1731944096757,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,8 +19,10 @@\n import LoginForm from \"./components/Login\";\r\n import Logout from \"./components/Logout\";\r\n \r\n function App() {\r\n+  const [authToken, setAuthToken] = useState(localStorage.getItem(\"authToken\"));\r\n+\r\n   return (\r\n     <div className=\"App\">\r\n       <BrowserRouter>\r\n         <Nav />\r\n"
+                },
+                {
+                    "date": 1731944118892,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import { BrowserRouter, Routes, Route } from \"react-router-dom\";\r\n import \"./App.css\";\r\n-\r\n+import React, { useState } from \"react\";\r\n import Nav from \"./components/Nav\";\r\n import Slider from \"./components/Slider\";\r\n import Filter_service from \"./components/Filter_service\";\r\n import ItemBox from \"./components/ItemBox\";\r\n"
+                },
+                {
+                    "date": 1731944299321,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import { BrowserRouter, Routes, Route } from \"react-router-dom\";\r\n import \"./App.css\";\r\n import React, { useState } from \"react\";\r\n+\r\n import Nav from \"./components/Nav\";\r\n import Slider from \"./components/Slider\";\r\n import Filter_service from \"./components/Filter_service\";\r\n import ItemBox from \"./components/ItemBox\";\r\n@@ -47,11 +48,14 @@\n           <Route path=\"/service-gallery/\" element={<Service_gallery />} />\r\n           <Route path=\"/package/\" element={<Package />} />\r\n           <Route path=\"/planner-list/\" element={<PlannerList />} />\r\n           <Route path=\"/create-package/\" element={<PackageCreate />} />\r\n-          <Route path=\"/login/\" element={<LoginForm />} />\r\n-          {/* <Route path=\"/login\" element={<Login setAuthToken={setAuthToken} />} /> */}\r\n+          {/* <Route path=\"/login/\" element={<LoginForm />} /> */}\r\n           <Route\r\n+            path=\"/login\"\r\n+            element={<LoginForm setAuthToken={setAuthToken} />}\r\n+          />\r\n+          <Route\r\n             path=\"/logout\"\r\n             element={<Logout setAuthToken={setAuthToken} />}\r\n           />\r\n         </Routes>\r\n"
                 }
             ],
             "date": 1731420256557,

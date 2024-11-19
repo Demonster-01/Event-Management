@@ -3,30 +3,23 @@ import React, { useState } from "react";
 function AddToPlannerButton({ packageId, venueId, serviceId }) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleAddToPlanner = async () => {
-    const data = {};
-    if (packageId) {
-      data.package = packageId;
-    }
-    if (venueId) {
-      data.venue = venueId;
-    }
-    if (serviceId) {
-      data.service = serviceId;
-    }
-    data.booked_at = new Date().toISOString();
+    setError("");
+    setSuccess(false);
+    setLoading(true);
 
-    // Add session ID for anonymous users if not authenticated
-    const sessionId = localStorage.getItem("session_id"); // Assuming session_id is stored in localStorage
-    if (!sessionId) {
-      // Generate a session ID for the first time
-      const newSessionId = `session_${Math.random().toString(36).substr(2, 9)}`;
-      localStorage.setItem("session_id", newSessionId);
-      data.session_id = newSessionId;
-    } else {
-      data.session_id = sessionId;
-    }
+    const accessToken = localStorage.getItem("authToken");
+
+    const data = {
+      package: packageId || null,
+      venue: venueId || null,
+      service: serviceId || null,
+      booked_at: new Date().toISOString(),
+    };
+
+    console.log("Data to send:", data); // Log data for debugging
 
     try {
       const response = await fetch(
@@ -35,31 +28,48 @@ function AddToPlannerButton({ packageId, venueId, serviceId }) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            ...(accessToken && { Authorization: `Bearer ${accessToken}` }),
           },
           body: JSON.stringify(data),
         }
       );
 
-      const responseData = await response.json();
-      console.log("API Response:", responseData);
-
       if (response.ok) {
-        alert("Item successfully added to planner.");
+        const responseData = await response.json();
+        console.log("Item added to planner:", responseData);
+        setSuccess(true);
       } else {
-        alert(`Failed to add item to planner: ${responseData.error}`);
+        const errorData = await response.json();
+        console.error("Error adding item to planner:", errorData);
+        setError(errorData.error || "Failed to add item to planner.");
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("Failed to add item to planner. Please try again.");
+      console.error("Request failed:", error);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
-      <button onClick={handleAddToPlanner}>Add to Planner</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      <button
+        onClick={handleAddToPlanner}
+        disabled={loading}
+        style={{
+          padding: "10px 20px",
+          backgroundColor: loading ? "gray" : "blue",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: loading ? "not-allowed" : "pointer",
+        }}
+      >
+        {loading ? "Adding..." : "Add to Planner"}
+      </button>
+      {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
       {success && (
-        <p style={{ color: "green" }}>
+        <p style={{ color: "green", marginTop: "10px" }}>
           Item added successfully to your planner!
         </p>
       )}

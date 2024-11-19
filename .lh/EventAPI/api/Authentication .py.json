@@ -1,0 +1,22 @@
+{
+    "sourceFile": "EventAPI/api/Authentication .py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1731937775018,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1731937941047,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,10 @@\n+# EventAPI/api/Authentication.py\r\n from rest_framework_simplejwt.authentication import JWTAuthentication\r\n from rest_framework_simplejwt.exceptions import InvalidToken\r\n \r\n class CustomJWTAuthentication(JWTAuthentication):\r\n     def authenticate(self, request):\r\n         try:\r\n             return super().authenticate(request)\r\n         except InvalidToken:\r\n-            return None  # Return None if token is invalid\r\n+            return None  # Return None if the token is invalid\r\n"
+                }
+            ],
+            "date": 1731937775018,
+            "name": "Commit-0",
+            "content": "from rest_framework_simplejwt.authentication import JWTAuthentication\r\nfrom rest_framework_simplejwt.exceptions import InvalidToken\r\n\r\nclass CustomJWTAuthentication(JWTAuthentication):\r\n    def authenticate(self, request):\r\n        try:\r\n            return super().authenticate(request)\r\n        except InvalidToken:\r\n            return None  # Return None if token is invalid\r\n"
+        }
+    ]
+}
